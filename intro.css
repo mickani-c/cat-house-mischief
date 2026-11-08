@@ -1,13 +1,13 @@
 /* Illustration and hand-painted paper buttons for the title screen. */
 body:has(#intro:not([hidden])){overflow:hidden}
 #intro{position:fixed;inset:0;z-index:20;padding:clamp(10px,2vw,26px);overflow:auto;background:radial-gradient(circle at 50% 34%,#fff3da99,#4b2d2380 90%)}
-#intro .intro-scene{position:relative;isolation:isolate;overflow:hidden;width:min(1480px,100%);height:min(930px,calc(100dvh - 24px));min-height:620px;border:8px solid #fff9eec9;border-radius:32px;background:#eed4b4 url('/assets/intro-home.webp') center/cover no-repeat;box-shadow:0 24px 80px #351d1580,0 0 0 1px #9d7149}
+#intro .intro-scene{position:relative;isolation:isolate;overflow:hidden;width:min(1480px,100%);height:min(930px,calc(100dvh - 24px));min-height:620px;border:8px solid #fff9eec9;border-radius:32px;background:#eed4b4 url('/cat-house-mischief/assets/intro-home.webp') center/cover no-repeat;box-shadow:0 24px 80px #351d1580,0 0 0 1px #9d7149}
 #intro .intro-scene::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(#fff4dc35 0%,transparent 28%,transparent 54%,#623f254d 100%);pointer-events:none}
 #intro .intro-story{position:absolute;top:2.5%;left:50%;width:min(790px,76%);transform:translateX(-50%);z-index:1}
 #intro .intro-title{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 8px #64462d50)}
 #intro .intro-controls{position:absolute;left:50%;bottom:4%;z-index:2;width:min(930px,94%);transform:translateX(-50%);text-align:center}
 #intro .intro-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(5px,1.1vw,18px);align-items:center}
-#intro .intro-paper-button{display:block;width:100%;aspect-ratio:2.12/1;padding:0;border:0;border-radius:0;background-color:transparent;background-image:url('/assets/intro-paper-buttons.png');background-repeat:no-repeat;background-size:300% auto;background-position-y:55%;box-shadow:none;color:transparent;font-size:0;text-shadow:none;cursor:pointer;transition:transform .16s ease,filter .16s ease}
+#intro .intro-paper-button{display:block;width:100%;aspect-ratio:2.12/1;padding:0;border:0;border-radius:0;background-color:transparent;background-image:url('/cat-house-mischief/assets/intro-paper-buttons.png');background-repeat:no-repeat;background-size:300% auto;background-position-y:55%;box-shadow:none;color:transparent;font-size:0;text-shadow:none;cursor:pointer;transition:transform .16s ease,filter .16s ease}
 #intro #start{background-position-x:0}
 #intro #intro-restart{background-position-x:50%}
 #intro #intro-album{background-position-x:100%}

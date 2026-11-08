@@ -2237,14 +2237,14 @@ const caseCaptions=[
   '供詞：坐多三秒，張凳就係我嘅。','供詞：飲完都要識得走。','供詞：麻糬應該唔介意做證人。'
 ];
 const caseAsides=['先扮乖','開飯未呀','凳係我嘅','就飲一啖','杯自己跌','葉會郁呀','一爪入圈','水聲好聽','喵文機密','砂識飛喵','我喺紙箱','霸住唔走','飲完開溜','麻糬做證'];
-const recordPhoto=index=>index===1?'/assets/records/food.webp':'/assets/records/'+String(index===0?1:index).padStart(2,'0')+'.webp'+(index===2?'?v=2':'');
+const recordPhoto=index=>index===1?'/cat-house-mischief/assets/records/food.webp':'/cat-house-mischief/assets/records/'+String(index===0?1:index).padStart(2,'0')+'.webp'+(index===2?'?v=2':'');
 const secretCases=[
-  {id:'cup',title:'第三次，真係嬲喇！',line:'阿澄拿住抹布，麻糬睇到呆咗；栗子仲係一臉無辜。',description:'栗子連續三次推跌水杯。阿澄邊抹地邊忍唔住發脾氣；麻糬目擊全程。',quote:'「我真係只係掂咗一下……三次。」',photo:'/assets/records/secret-cup.webp',alt:'栗子第三次推跌水杯，阿澄拿著抹布生氣，麻糬在旁看呆了'},
-  {id:'orange',title:'橙色通緝令',line:'四個橙全部落地，阿澄當場責備，栗子繼續扮無辜。',description:'栗子把果盤的四個橙逐一撥落地。阿澄發現後忍唔住鬧牠，仲要自己逐個執返。',quote:'「佢哋自己碌落去㗎……」',photo:'/assets/records/secret-orange.webp',alt:'四個橙散在廚房地上；阿澄指著橙責備一臉無辜的栗子，麻糬在旁觀看'},
-  {id:'fridge',title:'最高處的求救聲',line:'栗子上咗雪櫃落唔返，大聲喵叫，阿澄趕來抱牠落地。',description:'栗子由廚房枱跳到細小落腳位，再爬上雪櫃。上到去先知落唔返，只好大聲叫阿澄救。',quote:'「我係上嚟巡邏，唔係驚高喵！」',photo:'/assets/records/secret-fridge.webp',alt:'栗子困在雪櫃頂大聲叫，阿澄在下面伸手準備接牠，麻糬抬頭看'},
-  {id:'bath',title:'廁所門外的合唱',line:'阿澄入廁所關門，栗子喺門外大叫，終於等到佢無奈開門。',description:'阿澄才剛關門，栗子就在外面大聲喵。阿澄嘆一口氣，開門讓栗子跟入去。',quote:'「我入廁所都要有你陪，係咪呀？」',photo:'/assets/records/secret-bath.webp',alt:'栗子在浴室門外大叫，阿澄無奈開門讓牠進去'},
-  {id:'cozy',title:'今日乖得有啲過份',line:'栗子和麻糬各自伏在貓床、紙箱，阿澄剛好經過，幸福得不敢作聲。',description:'兩隻貓剛好同時伏低，一隻在貓床，一隻在紙箱。阿澄走出來見到這一幕，靜靜笑了。',quote:'「你哋今日咁乖……真係好幸福。」',photo:'/assets/records/secret-cozy.webp',alt:'栗子伏在貓床、麻糬伏在紙箱，阿澄在旁溫柔地看著牠們'},
-  {id:'hide',title:'梳化背後的捉迷藏',line:'栗子在梳化旁輕聲喵，阿澄循聲找來，原來佢哋玩緊捉迷藏。',description:'栗子躲在梳化與盆栽之間，輕聲叫了一聲。阿澄走近找到牠，笑住認輸。',quote:'「搵到你喇！下次到我匿，好唔好？」',photo:'/assets/records/secret-hide.webp',alt:'栗子躲在梳化後方，阿澄蹲下找到牠，麻糬在旁觀看'}
+  {id:'cup',title:'第三次，真係嬲喇！',line:'阿澄拿住抹布，麻糬睇到呆咗；栗子仲係一臉無辜。',description:'栗子連續三次推跌水杯。阿澄邊抹地邊忍唔住發脾氣；麻糬目擊全程。',quote:'「我真係只係掂咗一下……三次。」',photo:'/cat-house-mischief/assets/records/secret-cup.webp',alt:'栗子第三次推跌水杯，阿澄拿著抹布生氣，麻糬在旁看呆了'},
+  {id:'orange',title:'橙色通緝令',line:'四個橙全部落地，阿澄當場責備，栗子繼續扮無辜。',description:'栗子把果盤的四個橙逐一撥落地。阿澄發現後忍唔住鬧牠，仲要自己逐個執返。',quote:'「佢哋自己碌落去㗎……」',photo:'/cat-house-mischief/assets/records/secret-orange.webp',alt:'四個橙散在廚房地上；阿澄指著橙責備一臉無辜的栗子，麻糬在旁觀看'},
+  {id:'fridge',title:'最高處的求救聲',line:'栗子上咗雪櫃落唔返，大聲喵叫，阿澄趕來抱牠落地。',description:'栗子由廚房枱跳到細小落腳位，再爬上雪櫃。上到去先知落唔返，只好大聲叫阿澄救。',quote:'「我係上嚟巡邏，唔係驚高喵！」',photo:'/cat-house-mischief/assets/records/secret-fridge.webp',alt:'栗子困在雪櫃頂大聲叫，阿澄在下面伸手準備接牠，麻糬抬頭看'},
+  {id:'bath',title:'廁所門外的合唱',line:'阿澄入廁所關門，栗子喺門外大叫，終於等到佢無奈開門。',description:'阿澄才剛關門，栗子就在外面大聲喵。阿澄嘆一口氣，開門讓栗子跟入去。',quote:'「我入廁所都要有你陪，係咪呀？」',photo:'/cat-house-mischief/assets/records/secret-bath.webp',alt:'栗子在浴室門外大叫，阿澄無奈開門讓牠進去'},
+  {id:'cozy',title:'今日乖得有啲過份',line:'栗子和麻糬各自伏在貓床、紙箱，阿澄剛好經過，幸福得不敢作聲。',description:'兩隻貓剛好同時伏低，一隻在貓床，一隻在紙箱。阿澄走出來見到這一幕，靜靜笑了。',quote:'「你哋今日咁乖……真係好幸福。」',photo:'/cat-house-mischief/assets/records/secret-cozy.webp',alt:'栗子伏在貓床、麻糬伏在紙箱，阿澄在旁溫柔地看著牠們'},
+  {id:'hide',title:'梳化背後的捉迷藏',line:'栗子在梳化旁輕聲喵，阿澄循聲找來，原來佢哋玩緊捉迷藏。',description:'栗子躲在梳化與盆栽之間，輕聲叫了一聲。阿澄走近找到牠，笑住認輸。',quote:'「搵到你喇！下次到我匿，好唔好？」',photo:'/cat-house-mischief/assets/records/secret-hide.webp',alt:'栗子躲在梳化後方，阿澄蹲下找到牠，麻糬在旁觀看'}
 ];
 const albumCases=[...levels,...secretCases];
 const secretIsUnlocked=id=>id==='cup'?secretCupUnlocked:id==='orange'?secretOrangeUnlocked:id==='fridge'?secretFridgeUnlocked:id==='bath'?secretBathUnlocked:id==='cozy'?secretCozyUnlocked:secretHideUnlocked;
@@ -2291,8 +2291,8 @@ const singleCaseArt={
 function setCaseArt(element,index){
   const art=caseArt[index]??5;
   element.setAttribute('data-art-type',art<0?'single':'atlas');
-  if(art<0){element.style.backgroundImage=`url('/assets/${singleCaseArt[art]??singleCaseArt[-2]}')`;element.style.backgroundSize='contain';element.style.backgroundPosition='center';}
-  else{element.style.backgroundImage="url('/assets/case-doodles.png')";element.style.backgroundSize=art===7?'350% 300%':'300% 300%';element.style.backgroundPosition=(art%3)*50+'% '+Math.floor(art/3)*50+'%';}
+  if(art<0){element.style.backgroundImage=`url('/cat-house-mischief/assets/${singleCaseArt[art]??singleCaseArt[-2]}')`;element.style.backgroundSize='contain';element.style.backgroundPosition='center';}
+  else{element.style.backgroundImage="url('/cat-house-mischief/assets/case-doodles.png')";element.style.backgroundSize=art===7?'350% 300%':'300% 300%';element.style.backgroundPosition=(art%3)*50+'% '+Math.floor(art/3)*50+'%';}
 }
 function renderCampaignMenu(){
   updateAlbumCount();
@@ -2762,7 +2762,7 @@ if(showcase){
   if(brandEyebrow)brandEyebrow.textContent='3D 小屋 · 書房造型樣板';
   document.querySelector('.sidehead h2').textContent='書房小試玩';
   document.querySelector('.sidehead .eyebrow').textContent='A LITTLE AFTERNOON';
-  ui['sample-link'].textContent='返回闖關';delete ui['sample-link'].dataset.art;ui['sample-link'].href='/';
+  ui['sample-link'].textContent='返回闖關';delete ui['sample-link'].dataset.art;ui['sample-link'].href='/cat-house-mischief/';
   ui['sample-tools'].hidden=false;
   cameraTarget.set(-5.1,.72,-2.85);
 }
@@ -2784,7 +2784,7 @@ if(cupEpisode){
   document.querySelector('#chapter-result > strong').textContent='神不知，貓不覺';
   document.querySelector('#chapter-result > p').textContent='自己碗水冇郁，主人杯水少咗。';
   ui['chapter-replay'].textContent='再試另一個方法';
-  ui['chapter-next'].href='/?preview=blame';ui['chapter-next'].textContent='下一幕：嫁禍麻糬 →';
+  ui['chapter-next'].href='/cat-house-mischief/?preview=blame';ui['chapter-next'].textContent='下一幕：嫁禍麻糬 →';
   document.querySelector('.sample-note').textContent='偷飲期間再按 E 或「收口扮乖」即可停低。主人望返過嚟之前，要識得收口呀。';
   document.querySelector('#sample-tools > p:not(.eyebrow)').textContent='點地面行路，拖動轉視角。空白鍵跳上茶几；E／F 互動，G 切換附近對象。';
   ui['camera-home'].textContent='客廳全景';cameraTarget.set(-5.25,.60,3.0);
@@ -2797,12 +2797,12 @@ if(blameEpisode){
   document.querySelector('#chapter-panel details p').textContent='書桌有逗貓鼠，撥鉛筆亦會吸引麻糬上枱。阿澄會望書架；亦可以先喵一聲引佢望另一邊。弄歪掛畫後，H 或「躲藏」會引導栗子跳落地，再由入口躲入紙箱；你亦可自行走到主人視線以外。';
   document.querySelector('#chapter-result > strong').textContent='清白的是麻糬';
   document.querySelector('#chapter-result > p').textContent='阿澄只見到麻糬喺現場。栗子靜靜地留喺紙箱。';
-  ui['chapter-replay'].textContent='再試另一個時機';ui['chapter-next'].href='/?preview=cup';ui['chapter-next'].textContent='再去偷飲杯水';
+  ui['chapter-replay'].textContent='再試另一個時機';ui['chapter-next'].href='/cat-house-mischief/?preview=cup';ui['chapter-next'].textContent='再去偷飲杯水';
   document.querySelector('.sample-note').textContent='主人見過栗子動手就會記住。紙箱有真實開口，躲藏期間亦可以按 H 或方向鍵走出嚟。';
   document.querySelector('#sample-tools > p:not(.eyebrow)').textContent='空白鍵跳上書桌；E／F 互動；G 切換對象；H 躲藏或探頭。';
 }
 for(const link of document.querySelectorAll('.episode-nav a')){
-  if(link.getAttribute('href')==='/?preview='+preview)link.setAttribute('aria-current','page');
+  if(link.getAttribute('href')==='/cat-house-mischief/?preview='+preview)link.setAttribute('aria-current','page');
 }
 const observer=new ResizeObserver(resize);observer.observe(ui.world);
 resize();

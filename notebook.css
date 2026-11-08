@@ -71,7 +71,7 @@ main{grid-template-columns:minmax(0,1fr) 330px;gap:24px}
   clip-path:none;
   border:0;
   border-radius:0;
-  background:transparent url('/assets/memo-paper.png') center / 100% 100% no-repeat;
+  background:transparent url('/cat-house-mischief/assets/memo-paper.png') center / 100% 100% no-repeat;
   box-shadow:none;
   filter:none;
 }
@@ -174,8 +174,8 @@ main{grid-template-columns:minmax(0,1fr) 365px;gap:22px}
 @media(max-width:690px){.notebook .notebook-heading img{width:min(100%,250px)}}
 
 /* The page covers the rear half of each coil; only the tips emerge inside the punched holes. */
-.notebook:before{z-index:2;left:-18px;top:22px;bottom:24px;width:37px;background:url('/assets/copper-double-loop.svg?v=4') left top / 37px 24px repeat-y;filter:drop-shadow(1px 2px 1px #67412455)}
-.notebook:after{display:block;z-index:3;left:0;right:auto;top:22px;bottom:24px;width:20px;height:auto;border-radius:0;background:url('/assets/copper-punch.svg?v=3') left top / 20px 24px repeat-y,#fff9ed;box-shadow:inset 2px 0 2px -1px #95652a40;pointer-events:none}
+.notebook:before{z-index:2;left:-18px;top:22px;bottom:24px;width:37px;background:url('/cat-house-mischief/assets/copper-double-loop.svg?v=4') left top / 37px 24px repeat-y;filter:drop-shadow(1px 2px 1px #67412455)}
+.notebook:after{display:block;z-index:3;left:0;right:auto;top:22px;bottom:24px;width:20px;height:auto;border-radius:0;background:url('/cat-house-mischief/assets/copper-punch.svg?v=3') left top / 20px 24px repeat-y,#fff9ed;box-shadow:inset 2px 0 2px -1px #95652a40;pointer-events:none}
 .notebook .case-head .eyebrow{position:relative;top:-7px;font-size:14px;letter-spacing:.02em;line-height:1.3;white-space:nowrap}
 @media(max-width:930px){.notebook .case-head .eyebrow{font-size:13px}}
 @media(max-width:360px),(max-height:550px) and (orientation:landscape){.notebook .case-head .eyebrow{font-size:11px}}
