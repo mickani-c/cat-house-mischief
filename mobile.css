@@ -6,6 +6,13 @@ summary {
   touch-action: manipulation;
 }
 
+.mobile-task-toggle,
+.mobile-notebook-close,
+.mobile-guide,
+.rotate-phone {
+  display: none;
+}
+
 /* Keep decorations attached to the actual torn paper, inside its transparent bounds. */
 .notebook #task .memo-tab {
   right: 3.5%;
@@ -215,192 +222,370 @@ summary {
   }
 }
 
-/* A phone in landscape has enough width for the house or the notebook,
-   but not both side by side. Give each one its own full-width row. */
+/* Phone landscape is a dedicated play view: the house fills the screen and
+   the notebook becomes a drawer that can be opened only when it is needed. */
 @media (orientation: landscape) and (max-width: 1024px) and (max-height: 600px) {
-  header,
-  main,
-  footer {
-    width: calc(100% - 16px);
-  }
-
-  header {
-    min-height: 62px;
-    gap: 8px;
-  }
-
-  .brand {
-    flex: 0 1 min(34vw, 300px);
-    min-width: 0;
-  }
-
-  .game-logo,
-  .game-logo img {
+  body.game-active {
     width: 100%;
-    max-width: 300px;
+    height: 100svh;
+    overflow: hidden;
+    background: #d8cabc;
   }
 
-  .header-actions {
-    flex: 1 1 auto;
-    max-width: none;
-    min-width: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin-top: 0;
+  body.game-active header {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    height: 44px;
+    min-height: 44px;
+    padding: 2px max(8px, env(safe-area-inset-right)) 2px max(8px, env(safe-area-inset-left));
+    background: #fff8edf2;
+    box-shadow: 0 2px 10px #5f46342b;
   }
 
-  .header-actions::-webkit-scrollbar {
+  body.game-active .brand,
+  body.game-active #sample-link {
     display: none;
   }
 
-  .header-actions .chip {
-    flex: 0 0 auto;
-    min-height: 40px;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  .stage,
-  .showcase .stage {
-    order: 1;
+  body.game-active .header-actions {
     width: 100%;
-    height: calc(100svh - 72px);
-    min-height: 275px;
-    border-radius: 16px;
+    max-width: none;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: clamp(4px, 1.5vw, 10px);
+    overflow: visible;
   }
 
-  .notebook,
-  .showcase .notebook {
-    order: 2;
+  body.game-active .header-actions .chip[data-art],
+  body.game-active .showcase .header-actions .chip[data-art] {
+    width: auto;
+    min-width: 66px;
+    height: 34px;
+    padding: 2px 9px 0;
+    border: 1px solid #d7b68e;
+    border-radius: 999px;
+    background: #fffaf0;
+    color: #744126;
+    font-size: 11px;
+    line-height: 1;
+    box-shadow: 0 2px 5px #6c4c3520;
+  }
+
+  body.game-active .header-actions .chip[data-art]::before {
+    display: none;
+  }
+
+  body.game-active main {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(100svh - 44px);
+    margin: 0;
+  }
+
+  body.game-active .stage,
+  body.game-active .showcase .stage {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body.game-active .mobile-task-toggle {
+    position: absolute;
+    z-index: 12;
+    top: 10px;
+    right: max(10px, env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    max-width: min(48vw, 300px);
+    min-height: 46px;
+    padding: 7px 13px 6px 10px;
+    border: 1px solid #c99961;
+    border-radius: 12px 3px 13px 5px;
+    background: linear-gradient(145deg, #fff0bded, #f4d58eed);
+    color: #713d27;
+    box-shadow: 0 4px 12px #4e34262f;
+    transform: rotate(1deg);
+    text-align: left;
+  }
+
+  body.game-active .mobile-task-toggle span {
+    display: grid;
+    place-items: center;
+    flex: 0 0 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #b56343;
+    color: #fff8e9;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  body.game-active .mobile-task-toggle b {
+    min-width: 0;
+    overflow: hidden;
+    font-size: clamp(12px, 2.1vw, 17px);
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.game-active .mobile-task-toggle i {
+    display: none;
+  }
+
+  body.game-active .mobile-guide {
+    position: absolute;
+    z-index: 11;
+    left: 50%;
+    bottom: 78px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    max-width: min(62vw, 520px);
+    padding: 7px 12px;
+    border: 1px solid #f4dfb7;
+    border-radius: 999px;
+    background: #fff9eae8;
+    color: #6f4735;
+    box-shadow: 0 3px 12px #50382c26;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  body.game-active .mobile-guide b {
+    font-size: clamp(11px, 1.8vw, 14px);
+  }
+
+  body.game-active .mobile-guide span {
+    color: #866a59;
+    font-size: clamp(9px, 1.55vw, 12px);
+  }
+
+  body.game-active .notebook,
+  body.game-active .showcase .notebook {
+    position: fixed;
+    z-index: 40;
+    top: 0;
+    right: 0;
     display: block;
     box-sizing: border-box;
-    width: min(100%, 680px);
-    max-width: none;
-    margin: 88px auto 20px;
-    padding: 48px 24px 24px 43px;
+    width: min(82vw, 430px);
+    max-width: 430px;
+    height: 100svh;
+    margin: 0;
+    padding: 47px 22px 28px 44px;
+    overflow-x: visible;
+    overflow-y: auto;
+    border-radius: 22px 0 0 22px;
+    box-shadow: -16px 0 34px #39291f45;
+    transform: translateX(calc(100% + 40px));
+    transition: transform .26s ease;
+    overscroll-behavior: contain;
   }
 
-  .notebook-cat {
-    width: 205px;
-    top: -77px;
+  body.game-active .notebook.mobile-open {
+    transform: translateX(0);
   }
 
-  .notebook .case-head .eyebrow {
-    font-size: 16px;
+  body.game-active main::after {
+    content: '';
+    position: fixed;
+    z-index: 35;
+    inset: 0;
+    background: #3f2f2754;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .26s ease;
   }
 
-  .notebook .notebook-heading img {
-    width: min(100%, 335px);
+  body.game-active.mobile-notebook-open main::after {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .notebook .case-note {
+  body.game-active .mobile-notebook-close {
+    position: absolute;
+    z-index: 8;
+    top: 9px;
+    left: 42px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 4px 12px;
+    border: 1px solid #c79061;
+    border-radius: 999px;
+    background: #fff2cf;
+    color: #7a432a;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  body.game-active .notebook-cat {
+    display: none;
+  }
+
+  body.game-active .notebook .case-head .eyebrow {
+    top: 0;
+    font-size: 12px;
+  }
+
+  body.game-active .notebook .notebook-heading img {
+    width: min(100%, 260px);
+  }
+
+  body.game-active .notebook .case-note {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  body.game-active .notebook .case-note b {
     font-size: 18px;
   }
 
-  .notebook .case-note b {
-    font-size: 23px;
+  body.game-active .notebook #task {
+    margin: 8px 0 12px;
   }
 
-  .notebook #task {
-    margin-bottom: 14px;
+  body.game-active .notebook .task-id {
+    font-size: 27px;
   }
 
-  .notebook .task-id {
-    top: 20%;
-    font-size: clamp(34px, 5vw, 42px);
-  }
-
-  .notebook .task strong {
-    top: 20.5%;
-    font-size: clamp(23px, 3.4vw, 29px);
-    line-height: 1.15;
-  }
-
-  .notebook .task small {
-    top: 34%;
-    font-size: clamp(14px, 2vw, 17px);
-    line-height: 1.3;
-    padding: 4px 7px;
-  }
-
-  .notebook .task-art,
-  .notebook .task-art[data-art-type="atlas"] {
-    left: 32%;
-    top: 48%;
-    width: 34%;
-  }
-
-  .notebook .task-art[data-art-type="single"] {
-    left: 23%;
-    top: 49%;
-    width: 50%;
-    height: 34%;
-  }
-
-  .notebook #task:before {
-    font-size: 13px;
-  }
-
-  .notebook #task:after {
-    bottom: 19%;
-    font-size: 18px;
-  }
-
-  .notebook .memo-arrow {
-    bottom: 17%;
-  }
-
-  .notebook .album-open {
-    white-space: nowrap;
+  body.game-active .notebook .task strong {
     font-size: 17px;
   }
 
-  .notebook .album-open small {
-    font-size: 13px;
+  body.game-active .notebook .task small {
+    font-size: 10px;
   }
 
-  .notebook .campaign-menu summary {
-    white-space: nowrap;
-    font-size: 20px;
+  body.game-active .notebook .album-open {
+    font-size: 14px;
   }
 
-  .notebook .campaign-menu summary small {
-    font-size: 13px;
-  }
-
-  .notebook .campaign-levels {
-    max-height: 320px;
-  }
-
-  .notebook .campaign-levels button {
-    grid-template-columns: 26px 52px minmax(0, 1fr) 58px;
-  }
-
-  .notebook .campaign-levels button strong {
-    min-width: 0;
-    font-size: 16px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .notebook .campaign-levels button small {
+  body.game-active .notebook .album-open small {
     font-size: 11px;
   }
 
-  .notebook .campaign-levels button .case-status {
+  body.game-active .notebook .campaign-menu summary {
+    font-size: 17px;
+  }
+
+  body.game-active .notebook .campaign-menu summary small {
     font-size: 11px;
   }
 
-  footer .legend {
+  body.game-active .notebook .campaign-levels {
+    max-height: none;
+  }
+
+  body.game-active .notebook .campaign-levels button {
+    grid-template-columns: 24px 44px minmax(0, 1fr) 50px;
+  }
+
+  body.game-active .notebook .campaign-levels button strong {
+    font-size: 12px;
+  }
+
+  body.game-active .notebook .campaign-levels button small,
+  body.game-active .notebook .campaign-levels button .case-status {
+    font-size: 9px;
+  }
+
+  body.game-active .touch {
+    inset: auto max(10px, env(safe-area-inset-right)) 10px max(10px, env(safe-area-inset-left));
+  }
+
+  body.game-active .touch button {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff8e7d6;
+    font-size: 15px;
+    box-shadow: 0 3px 10px #34261e45;
+  }
+
+  body.game-active .dpad {
+    grid-template-columns: repeat(3, 46px);
+    gap: 4px;
+  }
+
+  body.game-active .stage-controls {
+    bottom: 10px;
+    gap: 4px;
+  }
+
+  body.game-active .cat-actions button,
+  body.game-active .target-switch,
+  body.game-active .stage-controls .action {
+    min-height: 40px;
+    padding-inline: 11px;
+    font-size: 12px;
+  }
+
+  body.game-active .room {
+    top: 10px;
+    left: max(10px, env(safe-area-inset-left));
+  }
+
+  body.game-active .minimap {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: 10px;
+    width: 68px;
+    height: 44px;
+  }
+
+  body.game-active footer {
     display: none;
   }
+}
+
+/* Portrait remains useful for the album and start page. Once play begins,
+   guide phone players into the landscape layout instead of shrinking the room. */
+@media (pointer: coarse) and (orientation: portrait) and (max-width: 690px) {
+  body.game-active .rotate-phone {
+    position: fixed;
+    z-index: 90;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: linear-gradient(160deg, #fff8e9f8, #efd8bdf8);
+  }
+
+  .rotate-phone div {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    color: #73452f;
+    text-align: center;
+  }
+
+  .rotate-phone span {
+    font-size: 64px;
+    line-height: 1;
+    animation: phone-turn 1.8s ease-in-out infinite;
+  }
+
+  .rotate-phone b {
+    font-size: 24px;
+  }
+
+  .rotate-phone small {
+    color: #8a6855;
+    font-size: 14px;
+  }
+}
+
+@keyframes phone-turn {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(78deg); }
 }

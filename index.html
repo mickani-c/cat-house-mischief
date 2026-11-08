@@ -103,7 +103,7 @@ aside{border-color:#fff8e9;background:linear-gradient(145deg,#fffbf1,#f6eadb);bo
 <link rel="stylesheet" href="/cat-house-mischief/album.css?v=4">
 <link rel="stylesheet" href="/cat-house-mischief/cat-controls.css?v=16">
 <link rel="stylesheet" href="/cat-house-mischief/intro.css?v=4">
-<link rel="stylesheet" href="/cat-house-mischief/mobile.css?v=5">
+<link rel="stylesheet" href="/cat-house-mischief/mobile.css?v=6">
 </head>
 <body>
 <audio id="meow-soft-audio" src="/cat-house-mischief/assets/meow-soft.ogg?v=3" preload="auto" hidden></audio>
@@ -143,8 +143,10 @@ aside{border-color:#fff8e9;background:linear-gradient(145deg,#fffbf1,#f6eadb);bo
     <div class="touch-actions"><button id="touch-act">互動</button></div>
   </div>
   <div id="pause-overlay" class="overlay pause-overlay" hidden><div class="welcome"><div class="eyebrow">慢慢諗，唔使急</div><h2>搗蛋暫停中</h2><p id="pause-reason">主人、貓咪同所有計時都暫停咗。</p><button id="resume" class="primary" type="button">繼續搗蛋</button></div></div>
+  <button id="mobile-task-toggle" class="mobile-task-toggle" type="button" aria-controls="mobile-notebook" aria-expanded="false" hidden><span id="mobile-task-number">01</span><b id="mobile-task-title">摸我一下嘛</b><i aria-hidden="true">打開筆記</i></button>
+  <div id="mobile-guide" class="mobile-guide" role="status" hidden><b>先找到栗子 🐾</b><span>點地面行近阿澄，再按「溫柔喵」</span></div>
 </section>
-<aside class="case-aside notebook" aria-label="栗子的犯案筆記"><img class="notebook-cat" src="/cat-house-mischief/assets/chestnut-peek-approved.png" alt="" aria-hidden="true"><div class="notebook-tape" aria-hidden="true"></div><div class="case-head"><div class="sidehead"><div><div class="eyebrow">喵星秘密記錄 · 請勿告訴阿澄</div><h2 class="notebook-heading"><img src="/cat-house-mischief/assets/notebook-title-approved.png" alt="栗子的犯案筆記" width="1944" height="809"></h2></div><span id="count" class="count">第 1 關</span></div></div><small class="case-note">嫌疑貓：<b>栗子</b><span class="denial-stamp">我冇做過</span></small>
+<aside id="mobile-notebook" class="case-aside notebook" aria-label="栗子的犯案筆記"><button id="mobile-notebook-close" class="mobile-notebook-close" type="button">返回遊戲</button><img class="notebook-cat" src="/cat-house-mischief/assets/chestnut-peek-approved.png" alt="" aria-hidden="true"><div class="notebook-tape" aria-hidden="true"></div><div class="case-head"><div class="sidehead"><div><div class="eyebrow">喵星秘密記錄 · 請勿告訴阿澄</div><h2 class="notebook-heading"><img src="/cat-house-mischief/assets/notebook-title-approved.png" alt="栗子的犯案筆記" width="1944" height="809"></h2></div><span id="count" class="count">第 1 關</span></div></div><small class="case-note">嫌疑貓：<b>栗子</b><span class="denial-stamp">我冇做過</span></small>
 <div id="task" class="task" aria-live="polite"><span id="task-id" class="task-id">01</span><div class="task-copy"><strong id="task-title">摸我一下嘛</strong><small id="task-goal">讓阿澄摸摸栗子的頭</small></div><div id="task-art" class="task-art" role="img" aria-label="栗子正在準備這宗案件"></div><span class="memo-tab memo-tab--green" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="6.2" ry="4.8"/><ellipse cx="4.3" cy="9" rx="2" ry="2.7" transform="rotate(-20 4.3 9)"/><ellipse cx="9" cy="5.9" rx="1.9" ry="2.8" transform="rotate(-10 9 5.9)"/><ellipse cx="15" cy="6.1" rx="1.9" ry="2.8" transform="rotate(10 15 6.1)"/><ellipse cx="19.7" cy="9.1" rx="2" ry="2.7" transform="rotate(20 19.7 9.1)"/></svg></span><span class="memo-tab memo-tab--coral" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11.5" cy="11" r="8.5"/><path d="M4 6q7 2 14 9M3 12q8-2 13-8M6 18q1-8 12-9M9 20q3-7 11-6M18 17q5 2 5 6"/></svg></span><svg class="memo-arrow" viewBox="0 0 100 60" aria-hidden="true"><path d="M88 54Q73 14 12 12M12 12l17-4M12 12l9 16" fill="none" stroke="#b4674a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <button id="album-open" class="album-open" type="button">📷 翻閱犯案相簿 <small id="album-count">0 / 20 張</small></button>
 <details id="campaign-menu" class="campaign-menu" open><summary>罪狀清單 <small id="campaign-unlocked"></small></summary><div id="campaign-levels" class="campaign-levels"></div></details>
@@ -171,6 +173,7 @@ aside{border-color:#fff8e9;background:linear-gradient(145deg,#fffbf1,#f6eadb);bo
   <div class="sample-note">橘貓栗子與灰貓麻糬，採用原先的簡潔卡通造型。</div>
 </div></aside>
 </main>
+<div class="rotate-phone" aria-hidden="true"><div><span>↻</span><b>請把手機打橫</b><small>栗子先有足夠空間搗蛋 🐾</small></div></div>
   <div id="intro" class="overlay" role="dialog" aria-modal="true" aria-label="這個家，我話事！"><div class="intro-scene"><div class="intro-story"><img class="intro-title" src="/cat-house-mischief/assets/game-title-approved.png" width="2172" height="724" alt="這個家，我話事！"></div><div class="intro-controls"><div class="intro-actions"><button id="start" class="intro-paper-button" type="button" disabled>開始遊戲</button><button id="intro-restart" class="intro-paper-button" type="button">重新開始</button><button id="intro-album" class="intro-paper-button" type="button">犯案相簿</button></div><div class="intro-caption"><small id="intro-progress" class="intro-progress"></small><small class="intro-footnote">重新開始由第 1 關重玩；已收集的相片會保留。</small></div></div></div></div>
 <div id="finish" class="completion-overlay" role="dialog" aria-modal="true" aria-labelledby="finish-title" hidden>
   <div class="completion-card">
@@ -201,7 +204,7 @@ aside{border-color:#fff8e9;background:linear-gradient(145deg,#fffbf1,#f6eadb);bo
 </dialog>
 <footer><span>暖木小屋 · 客廳／開放式廚房／書房／廁所</span><span class="legend">方向鍵／WASD 或點地面移動　空白鍵跳　E／F 互動　G 切換對象　Q／R 喵叫　P 暫停</span></footer>
 <script type="module">
-import('./game.js?v=55').catch(error=>{
+import('./game.js?v=56').catch(error=>{
   console.error(error);
   const message=document.querySelector('#intro .intro-caption');
   message.textContent='小屋暫時載入不到。請重新整理，或用支援 WebGL 的瀏覽器試玩。';
