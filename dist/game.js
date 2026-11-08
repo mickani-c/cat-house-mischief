@@ -349,27 +349,42 @@ function say(line,speaker='阿澄',duration=2.8){
 function toast(line,duration=2.4){
   ui.toast.textContent=line;ui.toast.hidden=false;state.toastUntil=state.now+duration;
 }
+function setMobileNotebook(open=false){
+  if(!ui['mobile-notebook']||!ui['mobile-task-toggle'])return;
+  const expanded=Boolean(open)&&state.phase!=='intro';
+  document.body.classList.toggle('mobile-notebook-open',expanded);
+  ui['mobile-notebook'].classList.toggle('mobile-open',expanded);
+  ui['mobile-task-toggle'].setAttribute('aria-expanded',String(expanded));
+  if(expanded)ui['mobile-notebook-close']?.focus({preventScroll:true});
+}
+function syncMobileTask(){
+  if(!ui['mobile-task-toggle'])return;
+  ui['mobile-task-number'].textContent=ui['task-id'].textContent;
+  ui['mobile-task-title'].textContent=ui['task-title'].textContent;
+  ui['mobile-task-toggle'].hidden=state.phase==='intro'||showcase;
+  ui['mobile-guide'].hidden=state.phase!=='play'||showcase||state.level!==0||state.cleared;
+}
 function updateTask(){
   // The approved artwork carries the main game's label; keep other modes' live labels visible.
   const resetLabel=label=>{ui.reset.textContent=label;if(label==='重玩本關')ui.reset.dataset.art='reset';else delete ui.reset.dataset.art;};
   if(blameEpisode){
     ui.count.textContent=blameChapter.state.won?'達成':'單一任務';ui['task-id'].textContent=blameChapter.state.won?'✓':'03';
-    ui['task-title'].textContent='唔係我，係麻糬';ui['task-goal'].textContent='弄歪掛畫，令阿澄誤會係麻糬做嘅。';resetLabel('重試嫁禍');return;
+    ui['task-title'].textContent='唔係我，係麻糬';ui['task-goal'].textContent='弄歪掛畫，令阿澄誤會係麻糬做嘅。';resetLabel('重試嫁禍');syncMobileTask();return;
   }
   if(cupEpisode){
     ui.count.textContent=cupChapter.state.won?'達成':'單一任務';ui['task-id'].textContent=cupChapter.state.won?'✓':'02';
-    ui['task-title'].textContent='你的水，特別好喝';ui['task-goal'].textContent='趁阿澄見唔到，偷飲一口杯水。';resetLabel('重試偷飲');return;
+    ui['task-title'].textContent='你的水，特別好喝';ui['task-goal'].textContent='趁阿澄見唔到，偷飲一口杯水。';resetLabel('重試偷飲');syncMobileTask();return;
   }
   if(chairEpisode){
     ui.count.textContent=chairChapter.state.stage==='won'?'達成':'單一任務';
     ui['task-id'].textContent=chairChapter.state.stage==='won'?'✓':'01';
     ui['task-title'].textContent='這張暖凳，現在是我的';ui['task-goal'].textContent='讓阿澄離座，再跳上轉椅坐穩。方法由你決定。';
-    resetLabel('重新試一次');return;
+    resetLabel('重新試一次');syncMobileTask();return;
   }
   if(showcase){
     ui.count.textContent='自由試玩';ui['task-id'].textContent='01';
     ui['task-title'].textContent='在書房搗蛋';ui['task-goal'].textContent='跳上書桌，踩踩鍵盤，或者向阿澄喵一聲。';
-    resetLabel('回到書房起點');return;
+    resetLabel('回到書房起點');syncMobileTask();return;
   }
   const level=levels[state.level];
   ui.count.textContent=level?'第 '+(state.level+1)+' 關 / '+levels.length:'自由搗蛋';
@@ -381,6 +396,7 @@ function updateTask(){
   setCaseArt(ui['task-art'],state.level);
   resetLabel(level?'重玩本關':'由第一關重玩');
   renderCampaignMenu();
+  syncMobileTask();
 }
 function complete(event){
   if(showcase)return;
@@ -452,6 +468,8 @@ function reset(showIntro=false){
   if(blameEpisode){place(mochi,[-3.45,-1.5]);state.ownerMode='blame-desk';state.nextIdle=Infinity;}
   ui.intro.hidden=!showIntro;ui.finish.hidden=true;
   ui.touch.hidden=ui.controls.hidden=showIntro;
+  document.body.classList.toggle('game-active',!showIntro);
+  setMobileNotebook(false);
   ui.speech.hidden=ui.toast.hidden=ui.action.hidden=ui['alt-action'].hidden=ui['target-switch'].hidden=ui['meow-bubble'].hidden=true;
   focusMix=0;
   ui['computer-feed'].hidden=ui['focus-badge'].hidden=true;
@@ -2316,7 +2334,7 @@ function renderCampaignMenu(){
 }
 function selectCampaignLevel(index){
   if(showcase||!Number.isInteger(index)||index<0||index>=levels.length||index>unlockedLevel)return false;
-  setLevel(index);reset();ui['campaign-menu'].open=false;ui.world.focus({preventScroll:true});return true;
+  setLevel(index);reset();ui['campaign-menu'].open=false;setMobileNotebook(false);ui.world.focus({preventScroll:true});return true;
 }
 function aimBall(prop){
   const from=prop.node.position,dx=from.x-player.root.position.x,dz=from.z-player.root.position.z,length=Math.hypot(dx,dz)||1;
@@ -2819,6 +2837,8 @@ function playLevel(){
 ui.start.addEventListener('click',()=>{unlockAudio();playLevel();});
 ui['intro-restart'].addEventListener('click',()=>{unlockAudio();setLevel(0);playLevel();});
 ui['intro-album'].addEventListener('click',()=>openAlbum());
+ui['mobile-task-toggle'].addEventListener('click',()=>setMobileNotebook(!document.body.classList.contains('mobile-notebook-open')));
+ui['mobile-notebook-close'].addEventListener('click',()=>{setMobileNotebook(false);ui.world.focus({preventScroll:true});});
 ui.replay.addEventListener('click',playLevel);
 ui['secret-continue'].addEventListener('click',closeSecretCup);
 ui['secret-album'].addEventListener('click',()=>{const index=levels.length+secretCases.findIndex(record=>record.id===state.secretType);closeSecretCup();openAlbum(index);});
