@@ -1,0 +1,192 @@
+/* The notebook is real HTML: labels, stamps and the cases follow game state. */
+main{grid-template-columns:minmax(0,1fr) 330px;gap:24px}
+.notebook{position:relative;isolation:isolate;margin-top:78px;padding:54px 20px 22px 35px;overflow:visible;border:1px solid #d7b987;border-radius:12px 19px 15px 9px;background:repeating-linear-gradient(to bottom,transparent 0 29px,#c7a98441 30px,#c7a98441 31px,transparent 32px),linear-gradient(110deg,#fffaf0,#f9e9d0);box-shadow:5px 6px 0 #d1a772,8px 12px 0 #e5cba2,0 19px 25px #7450353b;color:#63432f}
+.notebook:before{content:"";position:absolute;z-index:3;pointer-events:none;left:-27px;top:32px;bottom:24px;width:40px;background:radial-gradient(ellipse 13px 5px at 21px 20px,#8a5e3a 0 48%,#e5c497 52% 67%,transparent 72%) 0 0/40px 44px repeat-y;filter:drop-shadow(1px 2px 1px #64422a64)}
+.notebook:after{content:"";position:absolute;right:-9px;top:300px;width:11px;height:118px;border-radius:0 8px 8px 0;background:linear-gradient(#b4c487 0 48%,#eba98c 48%);box-shadow:2px 2px 3px #65462f44;z-index:-1}
+.notebook-cat{position:absolute;z-index:2;width:273px;max-width:none;right:-11px;top:-88px;pointer-events:none;filter:drop-shadow(0 2px 1px #7048292a)}
+.notebook-tape{position:absolute;z-index:4;right:10px;top:20px;width:49px;height:17px;transform:rotate(18deg);opacity:.83;background:repeating-linear-gradient(45deg,#edba9c 0 7px,#f7cbb2 7px 14px)}
+.notebook .case-head{min-height:auto;padding:0;z-index:1}.notebook .sidehead{padding-right:0}.notebook .case-head .eyebrow{font-size:9px;letter-spacing:.08em;color:#9b6148}.notebook .case-head h2{font-family:"Kaiti TC","STKaiti","DFKai-SB",cursive,system-ui;font-size:29px;max-width:none;line-height:1.08;letter-spacing:.06em;margin:5px 0 0;color:#6c3e28;transform:rotate(-2deg)}.notebook .case-head h2 span{font-size:19px;color:#c86e51}.notebook .count{margin:12px 0 0;background:#fff2d5;color:#985c39;border:0;border-bottom:3px solid #d9947a;border-radius:2px;transform:rotate(-2deg);font-size:11px}
+.notebook .case-note{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:8px -1px 19px;font-size:12px}.denial-stamp{flex:none;color:#b44836;border:2px solid #bc5943;border-radius:5px;padding:2px 5px;font-size:13px;font-weight:900;transform:rotate(-12deg);letter-spacing:.04em;line-height:1.2}
+.notebook #task{display:grid;grid-template-columns:40px 1fr;gap:6px;margin:0 -13px 14px -16px;padding:15px 11px 27px;border:0;border-radius:3px;background:#fff1c9;clip-path:polygon(0 2%,5% 0,13% 2%,23% 0,33% 2%,43% 0,54% 2%,65% 0,76% 2%,87% 0,100% 2%,100% 94%,94% 97%,87% 96%,79% 100%,70% 97%,61% 99%,52% 96%,42% 100%,33% 97%,24% 99%,14% 96%,7% 99%,0 96%);box-shadow:none;transform:rotate(-1deg);min-height:120px;align-items:center}
+.notebook #task:before{content:'進行中 🐾';right:7px;top:8px;transform:rotate(8deg);background:transparent;color:#b14d33;border:2px solid #c46e4e;border-radius:3px;font-size:10px;z-index:1}.notebook #task.done:before{content:'已破案 ✓';color:#618356;border-color:#759b63}
+.notebook #task:after{content:'♡ 先扮乖';grid-column:2;text-align:right;padding-right:8px;color:#b95c49;font-family:"Kaiti TC","STKaiti",cursive;font-size:14px;transform:rotate(-6deg)}
+.notebook .task-id{background:transparent;font-family:Georgia,serif;font-style:italic;font-size:26px;width:auto;height:auto;color:#925137}.notebook .task strong{font-family:"Kaiti TC","STKaiti",cursive,system-ui;font-size:17px;color:#62402c;line-height:1.3;padding-right:64px}.notebook .task small{margin-top:7px;font-size:12px;color:#6f513d;line-height:1.4}
+.notebook .campaign-menu{margin:0;border:0;padding:0}.notebook .campaign-menu summary{background:transparent;border:0;border-bottom:2px solid #d8997c;border-radius:0;padding:3px 0 7px;font-family:"Kaiti TC","STKaiti",cursive,system-ui;font-size:16px;color:#724532;list-style:none}.notebook .campaign-menu summary::-webkit-details-marker{display:none}.notebook .campaign-menu summary:before{content:'▾  ';color:#b6654b}.notebook .campaign-menu:not([open]) summary:before{content:'▸  '}.notebook .campaign-menu summary small{display:inline;color:#98765d;font-family:system-ui,sans-serif;font-size:10px}
+.notebook .campaign-levels{max-height:336px;margin:4px -7px 0 0;padding:0 8px 0 0;gap:0;scrollbar-color:#c9a98b transparent;scrollbar-width:thin}.notebook .campaign-levels button{display:grid;grid-template-columns:32px minmax(0,1fr) 55px;gap:1px 5px;min-height:57px;padding:7px 2px 6px 1px;border:0;border-bottom:1px dashed #d8bb9b;border-radius:0;background:transparent;box-shadow:none;text-align:left;align-items:center;position:relative}.notebook .campaign-levels button:nth-child(4n+1) .case-number{background:#efd4bb}.notebook .campaign-levels button:nth-child(4n+2) .case-number{background:#f6dfad}.notebook .campaign-levels button:nth-child(4n+3) .case-number{background:#d9e6cf}.notebook .campaign-levels button:nth-child(4n+4) .case-number{background:#ead8df}.notebook .campaign-levels button .case-number{grid-column:1;grid-row:1/span 2;width:28px;height:28px;font-size:11px;border-radius:6px;transform:rotate(-8deg)}.notebook .campaign-levels button strong{grid-column:2;grid-row:1;font-family:"Kaiti TC","STKaiti",cursive,system-ui;font-size:14px;line-height:1.25;color:#70452f}.notebook .campaign-levels button small{grid-column:2;grid-row:2;font-size:10px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#8b6c58}.notebook .campaign-levels button .case-status{grid-column:3;grid-row:1/span 2;text-align:center;font-size:10px;font-weight:850;color:#867260;border:1px solid #bba58c;padding:3px 1px;transform:rotate(-7deg);border-radius:3px}.notebook .campaign-levels button[data-done="true"] .case-status{color:#60834d;border-color:#809c65}.notebook .campaign-levels button[aria-current="step"]{border:0;border-bottom:1px dashed #d8bb9b;background:linear-gradient(90deg,#ffefc7b5,transparent);box-shadow:none}.notebook .campaign-levels button[aria-current="step"] .case-status{color:#ac5938;border-color:#bd7051}.notebook .campaign-levels button:disabled{opacity:.82}.notebook .campaign-levels button:focus-visible{outline:2px solid #a36546;outline-offset:-2px}.notebook .campaign-levels button:not(:disabled):hover{background:#f8eccf}
+.notebook .campaign-tip{margin:13px 0 8px;padding:4px 7px;border-left:3px solid #d69b77;color:#735443;font-size:11px}.notebook .campaign-progress{background:#eaf0dc;border-radius:2px;color:#526c46}.notebook-alibi{position:relative;width:fit-content;max-width:100%;margin:17px 0 11px -8px;padding:13px 11px;background:#ffe0d4;color:#7d483a;box-shadow:2px 3px 0 #c99f8859;transform:rotate(-4deg);font-family:"Kaiti TC","STKaiti",cursive;font-weight:700;font-size:13px}.notebook-alibi span{color:#c77556;margin-left:5px}.notebook .bonus-label{margin-top:20px;border-top:0;font-size:10px}.notebook .episode-nav{margin-top:10px;flex-wrap:wrap}.notebook .episode-nav a{background:#f5e5cf;border-color:#dfc6a6}
+.showcase .notebook-alibi{display:none}.showcase .notebook{padding-top:48px}
+@media(max-width:930px){main{grid-template-columns:minmax(0,1fr) 285px;gap:16px}.notebook{padding-left:31px;padding-right:15px}.notebook-cat{width:238px;top:-77px}}
+@media(max-width:690px){main{grid-template-columns:1fr}.notebook{margin:85px 10px 12px 20px;padding:45px 22px 22px 34px}.notebook-cat{width:235px;top:-80px}.notebook .campaign-levels{max-height:302px}}
+@media(max-width:690px) and (orientation:portrait){.notebook{display:block;grid-row:auto}.notebook .case-head{min-height:auto}.notebook .case-head .sidehead{padding-right:0;display:block}.notebook .case-head h2{font-size:28px}.notebook .count{margin-top:8px}.notebook .case-note{display:flex}.notebook #task{min-height:116px;padding:15px 11px 27px;display:grid}.notebook .campaign-menu{margin:0}.notebook .campaign-levels{max-height:285px}.notebook .campaign-tip{margin:13px 0 8px}.notebook-alibi{display:block}.stage{height:65svh;min-height:335px}}
+@media(max-height:550px) and (orientation:landscape){main{grid-template-columns:minmax(0,1fr) 245px;gap:13px}.notebook{margin-top:60px;padding-left:25px;padding-right:11px;padding-top:40px}.notebook-cat{width:201px;top:-65px}.notebook .case-head h2{font-size:23px}.notebook .campaign-levels{max-height:215px}}
+
+/* The memo illustration and the little case drawings carry the visual story. */
+.notebook #task{position:relative;min-height:238px;grid-template-columns:40px minmax(0,1fr);align-content:start;align-items:start;gap:5px 4px;padding:28px 13px 13px;background:linear-gradient(125deg,#fff2c7,#ffe8a7 60%,#fff1c8);box-shadow:3px 6px 0 #ba8c6340;}
+.notebook #task:before{top:7px;right:7px}.notebook #task:after{content:attr(data-aside);position:absolute;right:17px;bottom:21px;grid-column:auto;border-bottom:2px solid #d58d7e;padding:0 3px 1px;font-size:15px;z-index:2}
+.notebook .task-copy{min-width:0;padding:4px 62px 0 0}.notebook .task strong{display:inline;font-size:18px;padding:0 0 1px;box-shadow:inset 0 -5px #e9948b8a}.notebook .task small{display:table;margin-top:10px;padding:2px 4px;background:#e8e9be8a;font-size:12px}
+.notebook .task-art{display:block;grid-column:1/-1;width:172px;height:122px;margin:2px auto 0;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(1px 2px 1px #86573726)}
+.notebook .campaign-levels{max-height:385px}.notebook .campaign-levels button{grid-template-columns:26px 52px minmax(0,1fr) 52px;gap:0 3px;min-height:69px}.notebook .campaign-levels button .case-number{grid-column:1;grid-row:1/span 2;align-self:center;width:24px;height:25px}.notebook .campaign-levels button .case-illustration{display:block;grid-column:2;grid-row:1/span 2;align-self:center;width:50px;height:55px;background-repeat:no-repeat;filter:drop-shadow(0 2px 1px #76523425)}.notebook .campaign-levels button strong{grid-column:3;grid-row:1;font-size:13px}.notebook .campaign-levels button small{grid-column:3;grid-row:2;font-size:9px}.notebook .campaign-levels button .case-status{grid-column:4;grid-row:1/span 2}
+@media(max-width:930px){.notebook .campaign-levels button{grid-template-columns:23px 42px minmax(0,1fr) 49px}.notebook .campaign-levels button .case-illustration{width:42px;height:49px}.notebook .campaign-levels button strong{font-size:12px}}
+@media(max-width:690px){.notebook #task{min-height:228px}.notebook .campaign-levels{max-height:315px}}
+
+/* A cut paper memo, with the cat clip and loose pencil marks from the reference. */
+.notebook #task{
+  min-height:294px;
+  margin:-2px -18px 18px -23px;
+  padding:42px 18px 25px 32px;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:7px 3px;
+  border-radius:0;
+  transform:rotate(-1.2deg);
+  clip-path:polygon(0 3%,3% 1%,8% 2%,13% 0,19% 1.8%,25% .4%,30% 2%,37% .3%,44% 2%,51% .5%,59% 2%,66% .3%,73% 2%,80% .2%,87% 1.8%,93% .3%,100% 2%,99% 14%,100% 26%,99% 39%,100% 53%,99% 68%,100% 82%,99% 95%,94% 96%,89% 98%,84% 96%,77% 99%,70% 97%,63% 99.5%,56% 97%,49% 100%,42% 97%,35% 99%,28% 96%,21% 98%,15% 96%,9% 98%,3% 95%,1% 96%,0 83%,1% 68%,0 54%,1% 38%,0 20%);
+  background:radial-gradient(circle at 11% 19%,#d69c6223 0 1px,transparent 2px) 0 0/23px 21px,radial-gradient(circle at 68% 57%,#f5d49242,transparent 55%),linear-gradient(130deg,#fff1c4 0%,#ffedb5 55%,#f9df9c 100%);
+  box-shadow:none;
+  filter:drop-shadow(4px 8px 3px #8157343a);
+}
+.notebook .memo-clip{position:absolute;z-index:3;left:3px;top:8px;width:32px;height:51px;transform:rotate(-12deg);filter:drop-shadow(1px 2px 1px #865f3952)}
+.notebook .memo-star{position:absolute;left:39px;top:9px;color:#dc9a30;font-size:24px;line-height:1;transform:rotate(14deg);font-family:serif}
+.notebook #task:before{top:13px;right:9px;transform:rotate(8deg);padding:3px 6px;font-size:11px;background:#ffe9b387;letter-spacing:.02em}
+.notebook #task:after{right:18px;bottom:24px;color:#9b4f34;font-size:15px;transform:rotate(-6deg);text-decoration:none}
+.notebook .task-id{grid-column:1;grid-row:1;font-size:34px;line-height:1.05;color:#885136;align-self:start}
+.notebook .task-copy{grid-column:2;grid-row:1;padding:0 1px 0 0;align-self:start}
+.notebook .task strong{font-size:22px;line-height:1.24;font-weight:900;box-shadow:inset 0 -5px #e594868c}
+.notebook .task small{font-size:13px;line-height:1.35;margin-top:12px;padding:3px 5px;background:#e4e5b584}
+.notebook #task-goal:before{content:'目標：';font-weight:900;color:#67513a}
+.notebook .task-art{grid-column:1/-1;grid-row:2;width:166px;height:166px;margin:-2px auto 0;background-size:auto 300%;background-position:center;background-repeat:no-repeat}
+.notebook .task-art[data-art-type="single"]{width:195px;height:140px;margin:10px auto 12px;background-size:contain}
+.notebook .memo-arrow{position:absolute;right:55px;bottom:32px;width:61px;height:36px;transform:rotate(-7deg);pointer-events:none}
+.notebook .campaign-levels button .case-illustration{width:50px;height:50px;background-size:auto 300%}
+@media(max-width:930px){.notebook #task{margin-left:-20px;margin-right:-14px;padding-left:29px}.notebook .task strong{font-size:20px}.notebook .campaign-levels button .case-illustration{width:42px;height:42px}}
+@media(max-width:690px){.notebook #task{min-height:286px;margin-left:-19px;margin-right:-18px}.notebook .task-art{width:165px;height:165px}}
+
+/* The approved memo artwork provides the actual paper edge and clip. Keep its
+   aspect ratio so neither the clip nor the paper is stretched. */
+.notebook #task{
+  box-sizing:border-box;
+  aspect-ratio:1482 / 1062;
+  min-height:0;
+  padding:39px 20px 16px 29px;
+  grid-template-columns:36px minmax(0,1fr);
+  gap:4px 3px;
+  clip-path:none;
+  border:0;
+  border-radius:0;
+  background:transparent url('/assets/memo-paper.png') center / 100% 100% no-repeat;
+  box-shadow:none;
+  filter:none;
+}
+.notebook .memo-star{display:none}
+.notebook #task:before{top:18px;right:16px;font-size:9px;padding:2px 4px}
+.notebook #task:after{right:20px;bottom:20px;font-size:12px}
+.notebook .task-id{font-size:27px}
+.notebook .task-copy{padding:0 0 0 0}
+.notebook .task strong{font-size:18px;line-height:1.14}
+.notebook .task small{font-size:10px;line-height:1.2;margin-top:5px;padding:2px 3px}
+.notebook .task-art{width:130px;height:100px;margin:-1px auto 0}
+.notebook .task-art[data-art-type="single"]{width:150px;height:98px;margin:1px auto 0}
+.notebook .memo-arrow{right:39px;bottom:22px;width:42px;height:26px}
+@media(max-width:930px){.notebook #task{padding:36px 15px 12px 25px;grid-template-columns:30px minmax(0,1fr)}.notebook .task strong{font-size:16px}.notebook .task small{font-size:9px}.notebook .task-art{width:115px;height:88px}.notebook .task-art[data-art-type="single"]{width:130px;height:82px}}
+@media(max-width:690px){.notebook #task{min-height:0}.notebook .task-art{width:130px;height:100px}.notebook .task-art[data-art-type="single"]{width:150px;height:98px}}
+
+/* Give the case number its own room, and keep every atlas frame square. */
+.notebook #task{grid-template-columns:48px minmax(0,1fr);column-gap:6px;padding-left:29px;padding-right:22px;isolation:isolate}
+.notebook .task-id{font-size:27px;white-space:nowrap;line-height:1.1}
+.notebook .task-copy{position:relative;z-index:1;min-width:0}
+.notebook .task strong{display:block;overflow-wrap:anywhere}
+.notebook .task-art[data-art-type="atlas"]{width:108px;height:108px;overflow:hidden}
+.notebook .campaign-levels button .case-illustration[data-art-type="atlas"]{width:50px;height:50px;overflow:hidden}
+.notebook #task:after{right:34px;bottom:43px;white-space:nowrap}
+.notebook .memo-arrow{right:63px;bottom:45px}
+.notebook #task .memo-tab{position:absolute;right:-10px;width:20px;height:43px;border-radius:2px 10px 10px 2px;box-shadow:2px 2px 2px #765a4140;pointer-events:none}
+.notebook #task .memo-tab--green{top:42%;background:#b6c88d}
+.notebook #task .memo-tab--coral{top:61%;background:#eda98f}
+.notebook #task .memo-tab::after{content:'✦';display:block;text-align:center;margin-top:15px;font-size:10px;color:#6d674a88}
+@media(max-width:930px){.notebook #task{grid-template-columns:40px minmax(0,1fr);column-gap:5px;padding-left:25px}.notebook .task-art[data-art-type="atlas"]{width:92px;height:92px}.notebook #task:after{right:28px;bottom:33px}.notebook .memo-arrow{right:56px;bottom:35px}}
+@media(max-width:690px){.notebook #task{grid-template-columns:48px minmax(0,1fr);padding-left:29px}.notebook .task-art[data-art-type="atlas"]{width:108px;height:108px}.notebook #task:after{right:34px;bottom:43px}.notebook .memo-arrow{right:63px;bottom:45px}}
+
+/* The reference tabs tuck immediately beneath the memo's right edge. */
+.notebook:after{display:none}
+.notebook #task{grid-template-columns:42px minmax(0,1fr);padding-left:55px}
+.notebook .task-id{font-style:normal}
+.notebook #task .memo-tab{right:1px;width:30px;height:46px;border:1px solid #8b8e6880;border-left:0;border-radius:2px 10px 10px 2px;box-shadow:2px 3px 3px #66523d3b;z-index:0;transform:rotate(2deg)}
+.notebook #task .memo-tab--green{top:32%;background:linear-gradient(100deg,#a9bd83,#cad6a4)}
+.notebook #task .memo-tab--coral{top:51%;background:linear-gradient(100deg,#e7a18d,#f2b79d)}
+.notebook #task .memo-tab::after{display:none}
+.notebook #task .memo-tab svg{position:absolute;right:2px;top:12px;width:18px;height:18px;display:block;overflow:visible}
+.notebook #task .memo-tab--green svg{fill:#647c3f;transform:rotate(-13deg)}
+.notebook #task .memo-tab--coral svg{fill:none;stroke:#c87564;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transform:rotate(12deg)}
+@media(max-width:930px){.notebook #task{grid-template-columns:37px minmax(0,1fr);padding-left:49px}.notebook #task .memo-tab{right:1px;width:26px;height:40px}.notebook #task .memo-tab svg{width:16px;height:16px;top:10px}}
+@media(max-width:690px){.notebook #task{grid-template-columns:42px minmax(0,1fr);padding-left:55px}.notebook #task .memo-tab{width:30px;height:46px}.notebook #task .memo-tab svg{width:18px;height:18px;top:12px}}
+
+/* A roomier chapter card with deliberate places for every part of the memo. */
+main{grid-template-columns:minmax(0,1fr) 365px;gap:22px}
+.notebook-cat{width:220px;top:-82px;right:0}
+.notebook #task{display:block;position:relative;min-height:0;padding:0;aspect-ratio:1482 / 1062}
+.notebook .task-id{position:absolute;left:18%;top:22%;width:auto;height:auto;font-size:34px;line-height:1;font-family:Georgia,serif;color:#875039}
+.notebook .task-copy{position:static;padding:0}
+.notebook .task strong{position:absolute;left:31%;right:8%;top:23%;padding:0;font-size:21px;line-height:1.12;box-shadow:inset 0 -5px #e594868c;overflow-wrap:anywhere}
+.notebook .task small{position:absolute;left:18%;right:10%;top:38%;display:block;margin:0;padding:3px 6px;border-radius:5px;background:#e3e8baad;font-size:12px;line-height:1.25;box-sizing:border-box}
+.notebook .task-art,.notebook .task-art[data-art-type="atlas"]{position:absolute;left:34%;top:51%;width:31%;height:auto;aspect-ratio:1;margin:0;grid-column:auto;grid-row:auto}
+.notebook .task-art[data-art-type="single"]{position:absolute;left:25%;top:53%;width:46%;height:37%;aspect-ratio:auto;margin:0}
+.notebook #task:after{right:8%;bottom:15%;font-size:14px}
+.notebook .memo-arrow{right:19%;bottom:19%;width:14%;height:23%;transform:none}
+.notebook #task:before{top:9%;right:5%;font-size:10px;padding:2px 5px}
+
+/* Hand-drawn paw sticker and a more prominent suspect line. */
+.notebook .case-head h2 .title-paw{display:inline-flex;width:35px;height:35px;margin-left:3px;vertical-align:-7px;transform:rotate(12deg);filter:drop-shadow(1px 2px 1px #9c594050)}
+.notebook .title-paw svg{display:block;width:100%;height:100%}
+.notebook .case-note{font-family:"Kaiti TC","STKaiti",system-ui,sans-serif;font-size:16px;font-weight:800;line-height:1.35;margin-top:9px;margin-bottom:19px}
+.notebook .case-note b{margin-left:2px;margin-right:auto;padding:0 5px 2px;border-radius:5px;background:#f6d2c5b5;color:#8a4c35;font-size:20px;line-height:1.2;transform:rotate(-3deg)}
+.notebook .denial-stamp{font-size:12px}
+
+/* Each case uses two notebook rules: its title and its handwritten alibi. */
+.notebook .campaign-levels{margin-top:7px;background:repeating-linear-gradient(to bottom,#fbf0de 0 30px,#c7a9849c 30px 31px,#fbf0de 31px 32px)}
+.notebook .campaign-levels button{height:64px;min-height:64px;grid-template-columns:26px 54px minmax(0,1fr) 52px;grid-template-rows:32px 32px;gap:0 3px;padding:0 2px;border:0;border-radius:0;background:transparent;box-shadow:none}
+.notebook .campaign-levels button .case-number{align-self:center}
+.notebook .campaign-levels button .case-illustration{align-self:center}
+.notebook .campaign-levels button strong{align-self:end;padding-bottom:4px;font-size:14px;line-height:1.1}
+.notebook .campaign-levels button small{align-self:end;padding-bottom:4px;font-size:10px;line-height:1.1}
+.notebook .campaign-levels button .case-status{align-self:center}
+.notebook .campaign-levels button[aria-current="step"]{border:0;background:linear-gradient(90deg,#fff0c780,transparent)}
+.notebook .campaign-tip{margin-top:12px;padding:0 0 0 8px;font-size:11px;line-height:31px;background:repeating-linear-gradient(to bottom,transparent 0 29px,#c7a98465 30px 31px,transparent 32px)}
+@media(max-width:930px){main{grid-template-columns:minmax(0,1fr) 300px;gap:16px}.notebook-cat{width:205px;top:-76px;right:0}.notebook .task-id{font-size:27px}.notebook .task strong{font-size:17px}.notebook .task small{font-size:10px;padding:2px 4px}.notebook .task-art[data-art-type="single"]{top:54%}.notebook .campaign-levels button{grid-template-columns:23px 43px minmax(0,1fr) 48px}.notebook .campaign-levels button strong{font-size:12px}.notebook .campaign-levels button small{font-size:9px}}
+@media(max-width:690px){main{grid-template-columns:1fr}.notebook-cat{width:205px;top:-76px;right:0}.notebook .task-id{font-size:clamp(25px,8vw,34px)}.notebook .task strong{font-size:clamp(16px,5vw,21px)}.notebook .task small{font-size:clamp(10px,3vw,12px)}.notebook .campaign-levels button{grid-template-columns:26px 50px minmax(0,1fr) 50px}.notebook .campaign-levels button strong{font-size:13px}.notebook .campaign-levels button small{font-size:10px}}
+@media(max-height:550px) and (orientation:landscape){main{grid-template-columns:minmax(0,1fr) 270px}.notebook-cat{width:180px;top:-67px;right:0}.notebook .task-id{font-size:26px}.notebook .task strong{font-size:16px}.notebook .task small{font-size:9px}}
+@media(max-width:360px),(max-height:550px) and (orientation:landscape){.notebook .task-art[data-art-type="atlas"]{top:58%;width:28%}.notebook .task-art[data-art-type="single"]{top:58%;width:42%;height:30%}.notebook #task:after{bottom:13%;font-size:12px}}
+
+/* On narrow phones, keep each case title on its notebook rule. */
+@media(max-width:360px){
+  .notebook .campaign-levels button{grid-template-columns:42px minmax(0,1fr) 32px;gap:0 2px;padding-inline:0}
+  .notebook .campaign-levels button .case-number{position:absolute;left:0;top:20px;z-index:1;width:19px;height:22px;font-size:9px}
+  .notebook .campaign-levels button .case-illustration{grid-column:1;width:30px;height:34px;margin-left:10px}
+  .notebook .campaign-levels button .case-illustration[data-art-type="atlas"]{width:30px;height:30px}
+  .notebook .campaign-levels button strong,.notebook .campaign-levels button small{grid-column:2}
+  .notebook .campaign-levels button .case-status{grid-column:3}
+  .notebook .campaign-levels button strong{min-width:0;font-size:11px;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .notebook .campaign-levels button small{font-size:9px}
+  .notebook .campaign-levels button .case-status{font-size:8px;padding:3px 0}
+}
+
+/* The notebook heading is one crisp illustrated image with outlined lettering. */
+.notebook .case-head h2.notebook-heading{margin:1px 0 -5px;max-width:none;line-height:0;transform:none;letter-spacing:0}
+.notebook .notebook-heading img{display:block;width:min(100%,270px);height:auto;filter:drop-shadow(0 1px 0 #fffcf0b0)}
+@media(max-width:930px){.notebook .notebook-heading img{width:min(100%,240px)}}
+@media(max-width:690px){.notebook .notebook-heading img{width:min(100%,250px)}}
+
+/* The page covers the rear half of each coil; only the tips emerge inside the punched holes. */
+.notebook:before{z-index:2;left:-18px;top:22px;bottom:24px;width:37px;background:url('/assets/copper-double-loop.svg?v=4') left top / 37px 24px repeat-y;filter:drop-shadow(1px 2px 1px #67412455)}
+.notebook:after{display:block;z-index:3;left:0;right:auto;top:22px;bottom:24px;width:20px;height:auto;border-radius:0;background:url('/assets/copper-punch.svg?v=3') left top / 20px 24px repeat-y,#fff9ed;box-shadow:inset 2px 0 2px -1px #95652a40;pointer-events:none}
+.notebook .case-head .eyebrow{position:relative;top:-7px;font-size:14px;letter-spacing:.02em;line-height:1.3;white-space:nowrap}
+@media(max-width:930px){.notebook .case-head .eyebrow{font-size:13px}}
+@media(max-width:360px),(max-height:550px) and (orientation:landscape){.notebook .case-head .eyebrow{font-size:11px}}
+
+/* The title occupies the space above the game; the notebook aligns with the game, below its peeking cat. */
+header{min-height:154px;align-items:flex-end;padding-bottom:8px}
+.brand{width:min(610px,58vw)}
+.game-logo{margin:0;width:100%;line-height:0}
+.game-logo img{display:block;width:100%;height:auto}
+.header-actions{align-self:flex-start;margin-top:18px}
+.notebook{margin-top:0}
+@media(max-width:930px){header{min-height:132px}.brand{width:min(480px,55vw)}}
+@media(max-width:690px){header{min-height:0;display:block;padding:7px 0 10px}.brand{width:min(100%,430px)}.header-actions{max-width:100%;justify-content:flex-start;margin-top:5px}.notebook{margin-top:85px}}
+@media(max-height:550px) and (orientation:landscape){header{min-height:80px;display:flex}.brand{width:min(360px,52vw)}.header-actions{max-width:48%;margin-top:6px}.notebook{margin-top:0}}

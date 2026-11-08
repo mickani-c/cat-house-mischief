@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6eee3">
+<title>栗子的犯案筆記｜這個家，我話事！</title>
+<style>
+:root{color-scheme:light;--ink:#352c29;--soft:#6c5950;--paper:#fffaf1;--green:#335a48;--line:#e5d7c7;--rust:#a94f36}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,"PingFang HK","Microsoft JhengHei",sans-serif;color:var(--ink);background:#f6eee3}button{font:inherit;cursor:pointer;color:inherit}button:focus-visible{outline:3px solid #40785d;outline-offset:3px}button:disabled{cursor:default;opacity:.55}
+header,main,footer{width:min(1420px,100% - 48px);margin-inline:auto}header{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:12px}h1{margin:0;font-size:clamp(23px,3.4vw,35px);line-height:1.18;letter-spacing:.035em}.brand{display:flex;align-items:center;gap:12px}.paw{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#ebc8ab;color:#74442e}.paw svg{width:30px}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.18em;color:var(--rust)}.header-actions{display:flex;gap:8px}.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:13px;font-weight:750;white-space:nowrap}
+main{display:grid;grid-template-columns:minmax(0,1fr) 286px;gap:16px;align-items:start}.stage{position:relative;isolation:isolate;overflow:hidden;border-radius:26px;background:#e9dbcb;min-height:440px;height:min(73svh,820px);box-shadow:0 10px 24px #72513c16;touch-action:none}#world{position:absolute;inset:0;outline:none}canvas{display:block;width:100%;height:100%;outline:0}.room,.action,.speech,.toast{position:absolute;z-index:2}.room{left:16px;top:16px;background:#fff9eeec;border:1px solid #fff6e9;padding:8px 13px;border-radius:12px;font-size:13px;font-weight:750}.room span{color:#9b5336;margin-right:5px}.speech{top:17%;left:50%;transform:translateX(-50%);max-width:88%;width:max-content;padding:10px 16px;border-radius:16px;background:#fffbf3;box-shadow:0 4px 14px #6f47232c;text-align:center;font-size:14px;font-weight:700;pointer-events:none}.speech small{display:block;color:var(--rust);font-size:10px;margin-bottom:2px}
+.action{bottom:19px;left:50%;transform:translateX(-50%);border:1px solid #fff6e9;background:#fffbf4ed;border-radius:14px;padding:8px 12px;font-weight:750;white-space:nowrap;box-shadow:0 4px 15px #4e38271c}.action kbd{display:inline-grid;place-items:center;background:#e8d9c8;border-radius:5px;width:24px;height:24px;margin-right:5px}.toast{top:15px;right:16px;background:#395e4c;color:white;border-radius:13px;padding:9px 13px;font-size:13px;font-weight:750}.overlay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;background:#47332644;padding:12px}.welcome{width:min(414px,96%);border-radius:23px;padding:clamp(16px,4vw,31px);background:#fffaf1;box-shadow:0 18px 52px #3f2d2855;border:1px solid #fff;text-align:center}.welcome h2{font-size:clamp(23px,4vw,34px);line-height:1.2;margin:7px 0 10px}.welcome p{font-size:14px;line-height:1.65;color:var(--soft);margin:0 auto 17px}.primary{background:var(--green);border:0;border-radius:13px;color:#fff;padding:11px 20px;font-weight:800}.welcome .primary{min-width:65%}.welcome .chip{margin-top:10px}.welcome .eyebrow{font-size:11px}
+aside{background:var(--paper);border:1px solid #eddfcf;border-radius:23px;padding:18px;box-shadow:0 8px 20px #7650330c}.sidehead{display:flex;align-items:center;justify-content:space-between;gap:8px}aside h2{font-size:20px;margin:2px 0 0}.count{font-size:12px;font-weight:800;color:var(--green);background:#e9ede1;border-radius:10px;padding:6px 9px}.task{display:grid;grid-template-columns:29px 1fr;gap:9px;padding:10px;border:1px solid var(--line);border-radius:12px;align-items:start}.task.done{background:#edf0e7;border-color:#d7e0cf}.task-id{display:grid;place-items:center;width:29px;height:29px;background:#eedac8;border-radius:8px;font-size:11px;font-weight:800;color:#743f2d}.done .task-id{background:#d8e5d4;color:var(--green)}.task strong{display:block;font-size:13px;line-height:1.5}.task small{display:block;color:var(--soft);font-size:11px;line-height:1.5}
+.roster{border-top:1px solid var(--line);margin-top:14px;padding-top:13px;display:grid;gap:8px}.roster div{font-size:12px;color:var(--soft);display:flex;align-items:center;gap:7px}.roster strong{color:var(--ink)}.dot{width:9px;height:9px;border-radius:50%;background:#ca7750}.dot.gray{background:#787593}.dot.green{background:#609477}footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;padding:12px 2px 15px;color:var(--soft);font-size:12px}.touch{display:none;position:absolute;inset:auto 12px 12px;z-index:3;justify-content:space-between;align-items:end;pointer-events:none}.touch button{pointer-events:auto;touch-action:none;width:42px;height:42px;padding:0;border:1px solid #fff9e9;background:#fff9ede8;border-radius:12px;font-weight:800;box-shadow:0 3px 9px #4e38272c;user-select:none}.dpad{display:grid;grid-template-columns:repeat(3,42px);gap:4px}.dpad button:first-child{grid-column:2}.dpad button:nth-child(2){grid-column:1}.touch-actions{display:flex;gap:6px}.touch-actions button{width:48px}.legend{white-space:nowrap}
+.minimap{position:absolute;right:16px;bottom:16px;width:92px;height:58px;border:3px solid #fffaec;border-radius:9px;overflow:hidden;background:#e2bfa2;box-shadow:0 2px 10px #3c2c2529;pointer-events:none}
+.minimap i{position:absolute;display:block;border-bottom:1px solid #fff9;border-right:1px solid #fff9;height:43%;top:0}.minimap i:nth-child(1){left:0;width:36%;background:#d5a08d}.minimap i:nth-child(2){left:36%;width:29%;background:#a6bfb3}.minimap i:nth-child(3){left:65%;width:35%;height:63%;background:#ece1c4}
+#map-dot{position:absolute;width:8px;height:8px;border:1px solid #fff8e6;border-radius:50%;background:#935031;transform:translate(-50%,-50%)}
+#finish .welcome{border:2px solid #d9a65b;background:linear-gradient(140deg,#fff9e7,#f9e3b8)}#finish h2{color:#714625}
+@media(pointer:coarse),(max-width:690px){.minimap{bottom:70px;width:71px;height:44px;right:12px}}
+[hidden]{display:none!important}
+@media(max-width:930px){header,main,footer{width:calc(100% - 26px)}main{grid-template-columns:minmax(0,1fr) 224px;gap:10px}aside{padding:12px}.stage{height:69svh;min-height:380px}}
+@media(max-width:690px){header{min-height:62px}.paw{width:36px;height:36px;border-radius:11px}.paw svg{width:23px}.brand{gap:7px}.header-actions{gap:4px;flex-wrap:wrap;justify-content:end}.chip{padding:6px 9px;font-size:11px}main{grid-template-columns:1fr}.stage{height:65svh;min-height:335px;border-radius:18px}aside{border-radius:17px}.roster{display:none}footer{font-size:11px}}
+@media(pointer:coarse),(max-width:690px){.touch{display:flex}.action{bottom:104px;font-size:12px;padding:5px 9px}.action kbd{display:none}}
+@media(max-height:550px) and (orientation:landscape){header{min-height:49px}.paw{width:32px;height:32px}.eyebrow{font-size:8px}.stage{height:calc(100svh - 61px);min-height:270px}.roster{display:none}.touch button{width:35px;height:35px}.dpad{grid-template-columns:repeat(3,35px)}.action{bottom:13px}.welcome{padding:14px}.welcome p{margin-bottom:8px}}
+
+.stage-controls{position:absolute;z-index:3;bottom:16px;left:50%;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;max-width:100%;pointer-events:none}
+.stage-controls .action{position:static;transform:none;pointer-events:auto}
+.cat-actions{display:flex;gap:5px;justify-content:center;pointer-events:auto}
+.cat-actions button{min-height:41px;padding:5px 10px;background:#fff9eef5;border:1px solid #fffbef;border-radius:12px;white-space:nowrap;font-weight:800;font-size:13px;box-shadow:0 3px 10px #4e382724;touch-action:manipulation}
+.cat-actions button:nth-child(2){background:#f4dfcf;color:#78432d}.cat-actions button:active{transform:translateY(1px);background:#ead8c3}
+.cat-actions kbd{font-size:10px;color:#654839;background:#f2e5d5;border-radius:4px;padding:3px 4px;margin-right:5px}
+.meow-bubble{position:absolute;z-index:2;transform:translate(-50%,-105%);padding:4px 9px;white-space:nowrap;pointer-events:none;background:#fff7dc;border:1px solid #eac78b;color:#754c3c;border-radius:12px;font-size:13px;font-weight:800}
+.meow-bubble.loud{background:#f3d0af;color:#7c381e;border-color:#d99872}
+.legend{white-space:normal}
+@media(pointer:coarse),(max-width:690px){
+  .stage-controls{bottom:105px;gap:5px}
+  .cat-actions button{min-height:36px;padding:4px 8px;font-size:12px}
+  .cat-actions kbd{display:none}
+}
+@media(max-height:550px) and (orientation:landscape){.stage-controls{bottom:12px}}
+.interactions{display:flex;gap:6px;justify-content:center}
+.interactions:not(:has(button:not([hidden]))){display:none}
+#task{margin:15px 0 0}
+.count{white-space:nowrap}
+#alt-action{background:#f5e1d1}
+.brand .eyebrow,.sidehead .eyebrow{letter-spacing:.17em}
+:root{--paper:#fffaf0;--ink:#302a25;--soft:#6e5a50;--green:#385c4c;--rust:#915640}
+body{background:radial-gradient(ellipse at 11% 0,#fff4e3 0,transparent 48%),linear-gradient(150deg,#eee4d7,#e8ded3)}
+.stage{border:1px solid #fff9ee;box-shadow:0 12px 32px #6b4c3728;background:#dfd3c7}
+aside{border-color:#fff8e9;background:linear-gradient(145deg,#fffbf1,#f6eadb);box-shadow:0 8px 26px #6e4c351a}
+.task{background:#fffaf1;border-color:#ead6c1}.task.done{background:#e8ede0}
+.room{font-size:12px;letter-spacing:.07em;border-radius:99px;box-shadow:0 3px 13px #6c4d3e1b}
+.welcome{background:linear-gradient(145deg,#fffbf1,#f7e8d6)}
+.paw{background:#dfb48e}
+.target-switch{pointer-events:auto;display:flex;align-items:center;gap:6px;min-height:30px;padding:4px 10px;border:1px solid #f7eddd;border-radius:999px;background:#355a4bf5;color:#fff8e9;white-space:nowrap;font-size:12px;font-weight:750;box-shadow:0 3px 9px #2b3d3029;touch-action:manipulation}
+.target-switch kbd{font-size:10px;border:1px solid #ffffff5f;border-radius:4px;padding:1px 4px}
+.cat-actions button,.stage-controls .action{border-color:#fff8e8;box-shadow:0 3px 12px #604a3428}
+.cat-actions button:last-child{background:#e8ecdb}
+@media(pointer:coarse),(max-width:690px){.target-switch{min-height:34px}.target-switch kbd{display:none}}
+@media(max-width:690px) and (orientation:portrait){
+  aside{grid-row:1;display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;padding:9px}
+  .sidehead h2{font-size:13px}.sidehead .eyebrow{display:none}.sidehead{flex-direction:column;align-items:start;gap:3px}
+  .count{padding:3px 6px;font-size:10px}#task{margin:0;padding:5px 7px;gap:6px}.task-id{width:24px;height:24px}
+  .stage{height:calc(100svh - 150px)}
+}
+@media(max-height:550px) and (orientation:landscape){
+  main{grid-template-columns:minmax(0,1fr) 184px}
+  .stage-controls{gap:4px}.target-switch{min-height:25px}
+}
+.computer-feed{position:absolute;z-index:2;top:54px;right:16px;max-width:min(270px,52%);padding:9px 12px;border:1px solid #d4bca2;border-radius:11px;background:#304038ed;color:#fff2d7;box-shadow:0 5px 16px #47302030;pointer-events:none}
+.computer-feed small{display:block;font-size:10px;letter-spacing:.07em;color:#e4c29d}
+.computer-feed code{display:block;margin-top:3px;white-space:pre-wrap;overflow-wrap:anywhere}
+.focus-badge{position:absolute;z-index:2;left:16px;top:57px;padding:6px 10px;border:1px solid #e7d6bf;border-radius:999px;background:#fff8e9ea;color:#5b4535;font-size:11px;font-weight:800;letter-spacing:.06em;pointer-events:none;box-shadow:0 3px 10px #4d38201c}
+.focus-badge span:first-child{color:#a96343;margin-right:2px}
+
+.header-actions a{color:inherit;text-decoration:none;display:inline-flex;align-items:center}.header-actions{flex-wrap:wrap;justify-content:end}
+.sample-tools{margin-top:20px;padding-top:15px;border-top:1px solid var(--line)}.sample-tools p:not(.eyebrow){font-size:12px;line-height:1.9;color:var(--soft)}.camera-tools{display:flex;gap:6px;flex-wrap:wrap}.camera-tools button{font-size:12px;padding:7px 10px}.sample-note{padding:11px;background:#e8ebdf;border-radius:12px;font-size:11px;line-height:1.8;color:#52614f}
+@media(max-width:690px){.showcase .sample-tools{display:none}.showcase .header-actions{gap:3px}.showcase .header-actions .chip{font-size:10px;padding:6px 8px}}
+
+.chapter-panel{margin-top:14px;padding:13px;border:1px solid #d5d9c7;border-radius:14px;background:#eef0e5}.chapter-panel>strong{font-size:13px;color:#405b47}.chapter-panel p{font-size:12px;color:var(--soft);line-height:1.7;margin:6px 0}.chapter-panel details{margin-top:11px;border-top:1px solid #d7dccb;padding-top:9px;font-size:12px}.chapter-panel summary{cursor:pointer;font-weight:700;color:#5b654f}.seat-progress{height:7px;background:#d8ddcb;border-radius:10px;overflow:hidden;margin-top:9px}.seat-progress i{display:block;height:100%;background:#88a273;border-radius:10px;transition:width .1s linear}.seat-hint{position:absolute;z-index:2;transform:translate(-50%,-100%);padding:6px 11px;border-radius:99px;background:#fff0c8f2;color:#6c4d24;border:1px solid #e3b96b;font-size:12px;font-weight:800;pointer-events:none;box-shadow:0 3px 12px #5b44202b}.chapter-result{margin-top:14px;padding:16px 12px;text-align:center;border:1px solid #d6b26b;border-radius:16px;background:linear-gradient(145deg,#fff5cf,#f1ddb2)}.chapter-result>span{display:block;font-size:32px;color:#a27832}.chapter-result strong{display:block;font-size:23px;color:#73502b}.chapter-result p{font-size:12px}.chapter-result small{display:block;color:#7d664a;font-size:11px;margin-bottom:12px}.chapter-result button{font-size:12px;padding:9px 12px}
+@media(max-width:690px) and (orientation:portrait){.showcase aside{grid-template-columns:1fr}.showcase .sidehead{display:none}.showcase #task{margin:0}.showcase .chapter-panel{margin:0;padding:7px 10px;display:grid;grid-template-columns:auto 1fr;gap:4px 9px;align-items:center}.showcase .chapter-panel>strong{font-size:11px}.showcase .chapter-panel>p{font-size:11px;margin:0}.showcase .chapter-panel details{grid-column:1/-1;margin:0;padding:0;border:0}.showcase .chapter-panel details p{font-size:11px}.showcase .chapter-result{margin:0;padding:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.showcase .chapter-result>span,.showcase .chapter-result p{display:none}.showcase .chapter-result strong{font-size:17px}.showcase .chapter-result small{margin:0}.showcase .stage{height:calc(100svh - 214px)}.seat-hint{font-size:11px}}
+
+.episode-nav{display:flex;gap:6px;margin-top:12px}.episode-nav a{color:#54624d;background:#e9ecdf;border:1px solid #d2d8c6;border-radius:99px;font-size:11px;font-weight:700;text-decoration:none;padding:5px 9px}.episode-nav a:hover{background:#dce4cd}.chapter-next{display:block;color:#705337;font-size:12px;font-weight:700;margin-top:11px}.chapter-panel.watched{background:#f1e3d7;border-color:#ddbea4}.chapter-panel.watched>strong{color:#8a513d}.chapter-panel.away{background:#e4ecdf;border-color:#b8cbb1}.chapter-panel .sip-label{display:block;font-size:10px;margin-top:8px;color:#59674e}.cup-episode #seat-progress{background:#d7e1d9}.cup-episode #seat-fill{background:#70a8a9}#cup-stop{background:#e8d2b9;border-color:#d9b990;color:#624b33}.chapter-result #chapter-method{line-height:1.8}
+@media(max-width:690px) and (orientation:portrait){.showcase .episode-nav{margin:0}.showcase .episode-nav a{font-size:10px;padding:3px 8px}.showcase .chapter-next{margin:0}.showcase .stage{height:calc(100svh - 242px)}.showcase .chapter-result{max-width:100%}}
+
+#hide-cat{background:#e9d8b9;border-color:#cfb78d;color:#655035}.chapter-panel.inspecting{background:#f2e6d1;border-color:#d7ba85}.chapter-panel.failed{background:#efddd2;border-color:#d8af99}.episode-nav a[aria-current="page"]{background:#536b55;color:#fff9ec;border-color:#536b55}
+
+.pause-overlay{z-index:8;background:#352a245c}.nearby-choices{pointer-events:auto;width:min(390px,88vw);max-height:190px;overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:9px;border-radius:15px;background:#fffbf3fa;border:1px solid #d7c4ac;box-shadow:0 8px 24px #47372835}.nearby-choices button{padding:8px 10px;border:1px solid #d9d4c4;background:#f3f1e7;border-radius:10px;text-align:left;line-height:1.4}.nearby-choices button[aria-pressed="true"]{border-color:#617c60;background:#dfE9d8}.nearby-choices strong{display:block;font-size:12px}.nearby-choices small{display:block;color:#726352;font-size:10px;margin-top:2px}.cat-actions{flex-wrap:wrap;max-width:min(530px,90vw)}#jump-down{background:#f1e3cf;color:#72553c}.stage-controls .target-switch:focus-visible{outline-color:#d4b371}#pause[aria-pressed="true"]{background:#dfE8d5;border-color:#8ca37a}.showcase .roster{font-size:11px}
+@media(pointer:coarse),(max-width:690px){.nearby-choices{max-height:160px;width:min(360px,90vw)}.nearby-choices button{min-height:44px}.cat-actions button{min-height:38px}.stage-controls{max-width:94%;width:max-content}.touch-actions{display:none}}
+@media(max-width:690px){.header-actions{max-width:52%}.header-actions .chip{font-size:10px;padding:6px 8px}.nearby-choices{grid-template-columns:1fr 1fr}.pause-overlay .welcome{padding:16px}}
+.awareness{position:absolute;z-index:2;left:16px;top:61px;padding:6px 10px;border-radius:99px;background:#e5eddfed;color:#45624b;font-size:11px;font-weight:750;pointer-events:none}.awareness.seen{background:#f1dfcdee;color:#845139}.world-history:empty{display:none}.world-history{font-size:11px;line-height:1.7;color:#73573e;border-left:3px solid #d5b788;padding:5px 9px;margin:13px 0}.mochi-mood{font-size:11px;color:#73637c;margin:12px 0}.failure-reason{padding:8px;border-radius:9px;background:#fff8eb;color:#7c4a34!important}#retry-attempt{font-size:11px;margin:3px 0 6px;white-space:normal}.focus-badge{top:94px}.toast{max-width:min(390px,65%)}
+@media(max-width:690px) and (orientation:portrait){.showcase .mochi-mood,.showcase .world-history{display:none}.showcase .failure-reason,.showcase #retry-attempt{grid-column:1/-1}.awareness{top:53px;font-size:10px;padding:5px 8px}.focus-badge{top:82px}.speech{top:22%}}
+.chapter-won .roster,.chapter-won #mochi-mood,.chapter-won #world-history{display:none}.actor-thought{position:absolute;z-index:3;transform:translate(-50%,-100%);background:#fff6db;border:1px solid #d9bd82;border-radius:50%;min-width:30px;height:30px;display:grid;place-items:center;color:#886329;font-size:19px;font-weight:900;pointer-events:none;box-shadow:0 3px 10px #45331f22}.chain-note{font-size:11px;line-height:1.8;color:#5f654e;background:#e9eddd;border-radius:10px;padding:10px;margin:12px 0}.success-flash{position:absolute;z-index:4;left:50%;top:22%;transform:translateX(-50%);padding:12px 24px;border-radius:99px;background:#fff0bbf2;border:2px solid #d9ad55;color:#765326;font-size:21px;font-weight:900;box-shadow:0 8px 24px #73522233;pointer-events:none;animation:little-win .35s ease-out}@keyframes little-win{from{opacity:0;transform:translate(-50%,12px) scale(.8)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@media(max-width:690px) and (orientation:portrait){.showcase .chain-note{font-size:10px;padding:5px 8px;margin:0}.success-flash{font-size:17px;padding:9px 15px}.chain-note{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.success-flash{animation:none}}
+.campaign-menu{margin-top:13px;border-top:1px solid var(--line);padding-top:11px}.campaign-menu summary{font-size:13px;font-weight:800;cursor:pointer}.campaign-menu summary small{font-size:10px;font-weight:500;color:#7b695a;margin-left:5px}.campaign-levels{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:240px;overflow:auto;margin-top:10px}.campaign-levels button{min-height:45px;border:1px solid #ddcfbb;background:#fffaf0;border-radius:10px;padding:7px;text-align:left;font-size:11px;line-height:1.5}.campaign-levels button[aria-current="step"]{border-color:#688765;background:#e2ebd8}.campaign-levels button[data-done="true"]{color:#4f7053}.campaign-tip{font-size:11px;color:#72604f;line-height:1.8;margin:11px 0}.campaign-progress:empty{display:none}.campaign-progress{padding:8px;border-radius:9px;font-size:12px;font-weight:750;background:#e8eddd;color:#51654c}.showcase .campaign-menu,.showcase #campaign-tip,.showcase #campaign-progress{display:none}
+@media(max-width:690px) and (orientation:portrait){.campaign-menu{grid-column:1/-1;margin:0;padding-top:5px}.campaign-menu summary{font-size:11px}.campaign-tip{grid-column:1/-1;margin:0;font-size:10px}.campaign-progress{grid-column:1/-1;margin:0;font-size:11px}.campaign-levels{max-height:160px}}
+.bonus-label{font-size:10px;color:#86745f;margin:13px 0 -6px}.showcase .bonus-label{display:none}
+.case-head{position:relative;padding:9px 3px 8px;min-height:95px}.case-head .sidehead{padding-right:67px;display:block}.case-head .eyebrow{font-size:10px;letter-spacing:.16em}.case-head h2{font-size:21px;line-height:1.18;color:#593626;max-width:172px}.case-head .count{display:inline-block;margin-top:7px;background:#f2dec2;color:#8c4c2e;border:1px solid #deb78d;transform:rotate(-3deg);font-size:11px}.case-cat{position:absolute;right:0;top:-5px;width:85px;height:91px;filter:drop-shadow(2px 5px 0 #b7825229);transform:rotate(7deg);pointer-events:none}.case-note{display:block;font-size:10px;color:#80644f;line-height:1.5;margin:2px 0 9px}.case-note b{color:#9d6041}.case-aside{background:repeating-linear-gradient(0deg,transparent 0 30px,#b4876740 31px,transparent 32px),linear-gradient(145deg,#fff9eb,#f5e7d1);border:2px solid #d8ba91;box-shadow:3px 5px 0 #d2ae7a,0 11px 24px #6e4c351a}.case-aside .task{position:relative;background:#fffdf5;border:1px dashed #cfa884;padding:12px 10px}.case-aside .task:before{content:'本案目標';position:absolute;right:7px;top:-8px;background:#b55d42;color:white;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:800;transform:rotate(5deg)}.case-aside .task-id{background:#f1d3b6;color:#81472f}.case-aside .task.done:before{content:'已得手';background:#5d8063}.case-aside .campaign-menu{border-top:2px dashed #d4b38f}.case-aside .campaign-menu summary{background:#f7e8d0;border:1px solid #e2c8a5;border-radius:9px;padding:8px;color:#74432f}.case-aside .campaign-menu summary small{display:block;margin:2px 0 0;color:#87705a}.case-aside .campaign-levels{grid-template-columns:1fr;max-height:286px;gap:6px;margin-top:8px}.case-aside .campaign-levels button{position:relative;display:grid;grid-template-columns:33px 1fr;gap:1px 8px;min-height:52px;padding:7px 9px;background:#fffdf6;border:1px solid #d7bfa3;border-radius:7px;box-shadow:2px 2px 0 #d6bf9b55}.case-aside .campaign-levels button .case-number{grid-row:span 2;align-self:center;border-radius:50%;background:#eed5b9;width:31px;height:31px;display:grid;place-items:center;color:#885335;font-weight:900;font-size:11px}.case-aside .campaign-levels button strong{font-size:12px;line-height:1.35}.case-aside .campaign-levels button small{font-size:10px;line-height:1.3;color:#846d5b}.case-aside .campaign-levels button[aria-current="step"]{background:#fff0d3;border:2px solid #ba744f;box-shadow:2px 2px 0 #b37851}.case-aside .campaign-levels button[data-done="true"]{background:#edf2e6}.case-aside .campaign-levels button:disabled{opacity:.68}.case-aside .campaign-tip{border-left:3px solid #d9a177;padding-left:7px}.case-aside .bonus-label{border-top:1px dashed #d2b792;padding-top:9px}
+@media(max-width:690px) and (orientation:portrait){.case-head{min-height:57px;padding:2px 0}.case-head .sidehead{padding-right:50px}.case-head h2{font-size:15px}.case-head .count{margin-top:2px}.case-cat{width:53px;height:58px;right:2px;top:-4px}.case-note{display:none}.case-aside .campaign-menu{grid-column:1/-1}.case-aside .campaign-levels{max-height:196px}.case-aside .task{min-height:54px}.case-aside .bonus-label{grid-column:1/-1}}
+</style>
+<link rel="stylesheet" href="/notebook.css?v=46">
+<link rel="stylesheet" href="/album.css?v=4">
+<link rel="stylesheet" href="/cat-controls.css?v=16">
+<link rel="stylesheet" href="/intro.css?v=4">
+<link rel="stylesheet" href="/mobile.css?v=5">
+</head>
+<body>
+<audio id="meow-soft-audio" src="/assets/meow-soft.ogg?v=3" preload="auto" hidden></audio>
+<audio id="meow-loud-audio" src="/assets/meow-loud.ogg" preload="auto" hidden></audio>
+<audio id="background-music" src="/assets/house-bgm.mp3" preload="metadata" loop hidden></audio>
+<header>
+<div class="brand"><h1 class="game-logo"><img src="/assets/game-title-approved.png" alt="這個家，我話事！" width="2172" height="724"></h1></div>
+  <div class="header-actions"><a id="sample-link" href="/?preview=chair" class="chip">霸位小關</a><button id="pause" class="chip" data-art="pause" aria-pressed="false" disabled>暫停</button><button id="view" class="chip" data-art="closeup" aria-pressed="false">貓咪近鏡</button><button id="sound" class="chip" data-art="sound-on" aria-pressed="true">音效開</button><button id="reset" class="chip" data-art="reset">重玩本關</button></div>
+</header>
+<main>
+<section class="stage" aria-label="3D 貓咪遊戲">
+  <div id="world" tabindex="-1"></div><div class="room"><span>⌂</span><b id="room">客廳</b></div>
+  <div id="awareness" class="awareness" hidden></div>
+  <div id="mochi-thought" class="actor-thought" aria-hidden="true" hidden></div><div id="success-flash" class="success-flash" role="status" hidden></div>
+  <div id="speech" class="speech" role="status" hidden><small id="speaker"></small><span id="line"></span></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="focus-badge" class="focus-badge" hidden><span aria-hidden="true">◉</span> <span id="focus-label"></span></div>
+  <div id="computer-feed" class="computer-feed" role="status" hidden><small>阿澄的電腦 · 新增文字</small><code id="computer-text"></code></div>
+  <div class="minimap" aria-hidden="true"><i></i><i></i><i></i><b id="map-dot"></b></div>
+  <div id="seat-hint" class="seat-hint" hidden></div>
+  <div id="meow-bubble" class="meow-bubble" role="status" hidden></div>
+  <div id="controls" class="stage-controls" hidden aria-label="栗子的動作">
+    <button id="target-switch" class="target-switch" hidden title="點選物件；G 鍵逐個切換" aria-expanded="false" aria-controls="nearby-choices"><kbd>G</kbd><span id="target-label"></span><span aria-hidden="true">▾ 選擇</span></button>
+    <div id="nearby-choices" class="nearby-choices" role="group" aria-label="附近可互動物件" hidden></div>
+    <div class="interactions">
+      <button id="action" class="action" hidden><kbd>E</kbd><span id="action-label"></span></button>
+      <button id="alt-action" class="action" hidden><kbd>F</kbd><span id="alt-label"></span></button>
+    </div>
+    <div class="cat-actions">
+      <button id="hide-cat" hidden><kbd>H</kbd><span id="hide-label">躲藏</span></button><button id="cup-stop" hidden><kbd>Esc</kbd>收口扮乖</button><button id="soft-meow"><kbd>Q</kbd>溫柔喵</button>
+      <button id="loud-meow"><kbd>R</kbd>大聲喵</button>
+      <button id="jump-down" hidden><span id="jump-down-label">落地</span></button><button id="jump"><kbd>空白鍵</kbd><span id="jump-label">跳</span></button>
+    </div>
+  </div>
+  <div id="touch" class="touch" aria-label="觸控操作" hidden>
+    <div class="dpad"><button data-key="ArrowUp" aria-label="上">▲</button><button data-key="ArrowLeft" aria-label="左">◀</button><button data-key="ArrowDown" aria-label="下">▼</button><button data-key="ArrowRight" aria-label="右">▶</button></div>
+    <div class="touch-actions"><button id="touch-act">互動</button></div>
+  </div>
+  <div id="pause-overlay" class="overlay pause-overlay" hidden><div class="welcome"><div class="eyebrow">慢慢諗，唔使急</div><h2>搗蛋暫停中</h2><p id="pause-reason">主人、貓咪同所有計時都暫停咗。</p><button id="resume" class="primary" type="button">繼續搗蛋</button></div></div>
+</section>
+<aside class="case-aside notebook" aria-label="栗子的犯案筆記"><img class="notebook-cat" src="/assets/chestnut-peek-approved.png" alt="" aria-hidden="true"><div class="notebook-tape" aria-hidden="true"></div><div class="case-head"><div class="sidehead"><div><div class="eyebrow">喵星秘密記錄 · 請勿告訴阿澄</div><h2 class="notebook-heading"><img src="/assets/notebook-title-approved.png" alt="栗子的犯案筆記" width="1944" height="809"></h2></div><span id="count" class="count">第 1 關</span></div></div><small class="case-note">嫌疑貓：<b>栗子</b><span class="denial-stamp">我冇做過</span></small>
+<div id="task" class="task" aria-live="polite"><span id="task-id" class="task-id">01</span><div class="task-copy"><strong id="task-title">摸我一下嘛</strong><small id="task-goal">讓阿澄摸摸栗子的頭</small></div><div id="task-art" class="task-art" role="img" aria-label="栗子正在準備這宗案件"></div><span class="memo-tab memo-tab--green" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="6.2" ry="4.8"/><ellipse cx="4.3" cy="9" rx="2" ry="2.7" transform="rotate(-20 4.3 9)"/><ellipse cx="9" cy="5.9" rx="1.9" ry="2.8" transform="rotate(-10 9 5.9)"/><ellipse cx="15" cy="6.1" rx="1.9" ry="2.8" transform="rotate(10 15 6.1)"/><ellipse cx="19.7" cy="9.1" rx="2" ry="2.7" transform="rotate(20 19.7 9.1)"/></svg></span><span class="memo-tab memo-tab--coral" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11.5" cy="11" r="8.5"/><path d="M4 6q7 2 14 9M3 12q8-2 13-8M6 18q1-8 12-9M9 20q3-7 11-6M18 17q5 2 5 6"/></svg></span><svg class="memo-arrow" viewBox="0 0 100 60" aria-hidden="true"><path d="M88 54Q73 14 12 12M12 12l17-4M12 12l9 16" fill="none" stroke="#b4674a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<button id="album-open" class="album-open" type="button">📷 翻閱犯案相簿 <small id="album-count">0 / 20 張</small></button>
+<details id="campaign-menu" class="campaign-menu" open><summary>罪狀清單 <small id="campaign-unlocked"></small></summary><div id="campaign-levels" class="campaign-levels"></div></details>
+<p id="campaign-tip" class="campaign-tip"></p><p id="campaign-progress" class="campaign-progress" role="status"></p>
+<p class="notebook-alibi">證供：我只係路過喵。<span aria-hidden="true">✎</span></p>
+<div id="chapter-panel" class="chapter-panel" hidden>
+  <strong id="chapter-status">阿澄：忙住工作</strong><p id="chapter-note"></p>
+  <div id="seat-progress" class="seat-progress" aria-label="坐穩進度" hidden><i id="seat-fill"></i></div>
+  <p id="failure-reason" class="failure-reason" role="status" hidden></p><button id="retry-attempt" class="chip" hidden>即刻再試這一幕</button>
+  <details id="help-details"><summary>想睇少少提示？</summary><p>試吓喺阿澄附近溫柔叫幾聲，或者大聲催佢陪玩。<br>書桌上嘅鍵盤、屏幕同窗簾，亦可能引到佢行開。</p></details>
+</div>
+<div id="chapter-result" class="chapter-result" role="status" hidden>
+  <span aria-hidden="true">♛</span><strong>工位繼承貓</strong><p>凳係暖嘅，主人係無奈嘅。</p><small id="chapter-method"></small>
+  <button id="chapter-replay" class="primary" type="button">再試另一個方法</button>
+  <a id="chapter-next" class="chapter-next" href="/?preview=cup">下一幕：偷飲杯水 →</a>
+</div>
+<p id="chain-note" class="chain-note" role="status" hidden></p>
+<p id="world-history" class="world-history" aria-live="polite"></p><p id="mochi-mood" class="mochi-mood"></p>
+<div class="roster"><div><i class="dot"></i><strong>栗子</strong> 你控制的橘貓</div><div><i class="dot gray"></i><strong>麻糬</strong> 會自己走動的灰貓</div><div><i class="dot green"></i><strong>阿澄</strong> 以為自己才是屋主</div></div>
+<div id="sample-tools" class="sample-tools" hidden>
+  <p class="eyebrow">換個角度看看</p>
+  <div class="camera-tools"><button id="orbit-left" class="chip" aria-label="向左轉動視角">↶ 左轉</button><button id="orbit-right" class="chip" aria-label="向右轉動視角">右轉 ↷</button><button id="camera-home" class="chip">書房全景</button></div>
+  <p>點地面行路，拖動畫面轉動視角。<br>行近書桌，按「跳上書桌」。<br>鍵盤旁可以踩字，亦可以擋屏幕。</p>
+  <div class="sample-note">橘貓栗子與灰貓麻糬，採用原先的簡潔卡通造型。</div>
+</div></aside>
+</main>
+  <div id="intro" class="overlay" role="dialog" aria-modal="true" aria-label="這個家，我話事！"><div class="intro-scene"><div class="intro-story"><img class="intro-title" src="/assets/game-title-approved.png" width="2172" height="724" alt="這個家，我話事！"></div><div class="intro-controls"><div class="intro-actions"><button id="start" class="intro-paper-button" type="button" disabled>開始遊戲</button><button id="intro-restart" class="intro-paper-button" type="button">重新開始</button><button id="intro-album" class="intro-paper-button" type="button">犯案相簿</button></div><div class="intro-caption"><small id="intro-progress" class="intro-progress"></small><small class="intro-footnote">重新開始由第 1 關重玩；已收集的相片會保留。</small></div></div></div></div>
+<div id="finish" class="completion-overlay" role="dialog" aria-modal="true" aria-labelledby="finish-title" hidden>
+  <div class="completion-card">
+    <div class="completion-heading"><img src="/assets/notebook-title-approved.png" alt="栗子的犯案筆記"><span>現場相片已收入犯案相簿</span><b id="finish-kicker"></b></div>
+    <div class="completion-content">
+      <figure class="completion-photo"><img id="finish-photo" src="" alt="" width="1100" height="825"><figcaption id="finish-caption"></figcaption></figure>
+      <div class="completion-side"><div class="completion-memo"><div class="completion-memo-content"><small>案 件 紀 錄</small><h2 id="finish-title"></h2><p id="finish-text"></p><i id="finish-quote"></i></div><span class="completion-tab green" aria-hidden="true">🐾</span><span class="completion-tab coral" aria-hidden="true">◌</span></div>
+        <div class="completion-actions"><button id="next" class="primary">下一關</button><button id="roam" class="primary" hidden>自由搗蛋 →</button><button id="replay" class="chip">重玩此關</button><button id="finish-album" class="chip">翻閱犯案相簿</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="secret-reward" class="completion-overlay secret-reward" role="dialog" aria-modal="true" aria-labelledby="secret-title" hidden>
+  <div class="completion-card">
+    <div class="completion-heading"><img src="/assets/notebook-title-approved.png" alt="栗子的犯案筆記"><span>特別相片已收入犯案相簿</span><b>✦ 秘密任務達成</b></div>
+    <div class="completion-content">
+      <figure class="completion-photo"><img id="secret-photo" src="/assets/records/secret-cup.webp" alt="栗子第三次推跌水杯；阿澄拿著抹布生氣，麻糬在旁看呆了" width="1100" height="825"><figcaption id="secret-caption">秘密證物 · 第三次，真係嬲喇！</figcaption></figure>
+      <div class="completion-side"><div class="completion-memo"><div class="completion-memo-content"><small>秘 密 案 件</small><h2 id="secret-title">第三次，真係嬲喇！</h2><p id="secret-description">栗子連續三次推跌水杯。阿澄邊抹地邊忍唔住發脾氣；麻糬目擊全程。</p><i id="secret-quote">「我真係只係掂咗一下……三次。」</i></div><span class="completion-tab green" aria-hidden="true">🐾</span><span class="completion-tab coral" aria-hidden="true">✦</span></div>
+        <div class="completion-actions"><button id="secret-continue" class="primary" type="button">繼續搗蛋</button><button id="secret-album" class="chip" type="button">翻閱特別相片</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<dialog id="album" class="album-dialog" aria-labelledby="album-title">
+  <div class="album-page"><div class="album-heading"><div><small>栗子的秘密收藏</small><h2 id="album-title">犯案紀錄相簿</h2><p id="album-summary"></p></div><button id="album-close" type="button" class="chip" aria-label="關閉相簿">✕ 關閉</button></div>
+    <div class="album-body"><div id="album-grid" class="album-grid" aria-label="案件相片及秘密相片"></div><figure class="album-viewer"><img id="album-large" src="" alt="" width="1100" height="825" hidden><div id="album-empty" class="album-empty">完成第一關，栗子的第一張犯案相片就會貼在這裏。</div><figcaption id="album-caption"></figcaption></figure></div>
+  </div>
+</dialog>
+<footer><span>暖木小屋 · 客廳／開放式廚房／書房／廁所</span><span class="legend">方向鍵／WASD 或點地面移動　空白鍵跳　E／F 互動　G 切換對象　Q／R 喵叫　P 暫停</span></footer>
+<script type="module">
+import('./game.js?v=55').catch(error=>{
+  console.error(error);
+  const message=document.querySelector('#intro .intro-caption');
+  message.textContent='小屋暫時載入不到。請重新整理，或用支援 WebGL 的瀏覽器試玩。';
+  document.querySelector('#start').disabled=true;
+});
+</script>
+</body></html>

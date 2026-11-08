@@ -1,0 +1,37 @@
+/* Illustration and hand-painted paper buttons for the title screen. */
+body:has(#intro:not([hidden])){overflow:hidden}
+#intro{position:fixed;inset:0;z-index:20;padding:clamp(10px,2vw,26px);overflow:auto;background:radial-gradient(circle at 50% 34%,#fff3da99,#4b2d2380 90%)}
+#intro .intro-scene{position:relative;isolation:isolate;overflow:hidden;width:min(1480px,100%);height:min(930px,calc(100dvh - 24px));min-height:620px;border:8px solid #fff9eec9;border-radius:32px;background:#eed4b4 url('/assets/intro-home.webp') center/cover no-repeat;box-shadow:0 24px 80px #351d1580,0 0 0 1px #9d7149}
+#intro .intro-scene::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(#fff4dc35 0%,transparent 28%,transparent 54%,#623f254d 100%);pointer-events:none}
+#intro .intro-story{position:absolute;top:2.5%;left:50%;width:min(790px,76%);transform:translateX(-50%);z-index:1}
+#intro .intro-title{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 8px #64462d50)}
+#intro .intro-controls{position:absolute;left:50%;bottom:4%;z-index:2;width:min(930px,94%);transform:translateX(-50%);text-align:center}
+#intro .intro-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(5px,1.1vw,18px);align-items:center}
+#intro .intro-paper-button{display:block;width:100%;aspect-ratio:2.12/1;padding:0;border:0;border-radius:0;background-color:transparent;background-image:url('/assets/intro-paper-buttons.png');background-repeat:no-repeat;background-size:300% auto;background-position-y:55%;box-shadow:none;color:transparent;font-size:0;text-shadow:none;cursor:pointer;transition:transform .16s ease,filter .16s ease}
+#intro #start{background-position-x:0}
+#intro #intro-restart{background-position-x:50%}
+#intro #intro-album{background-position-x:100%}
+#intro .intro-paper-button:hover:not(:disabled),#intro .intro-paper-button:focus-visible{filter:drop-shadow(0 5px 5px #5e392c8a);transform:translateY(-4px)}
+#intro .intro-paper-button:focus-visible{outline:3px solid #61432b;outline-offset:-7px}
+#intro .intro-paper-button:disabled{opacity:.65;cursor:wait}
+#intro .intro-caption{margin-top:-9px;padding:4px 15px 8px;color:#583521;line-height:1.4;text-shadow:0 1px 2px #fffaee,0 0 10px #fffaee,0 0 18px #fffaee}
+#intro .intro-progress,#intro .intro-footnote{display:block;font-size:clamp(12px,1.17vw,16px)}
+#intro .intro-progress{font-weight:800}
+#intro .intro-footnote{color:#543826;font-weight:650}
+#intro .intro-progress[hidden]{display:none}
+@media(max-width:700px){
+  #intro{padding:8px}
+  #intro .intro-scene{height:calc(100dvh - 16px);min-height:600px;border-width:5px;border-radius:22px;background-position:48% center}
+  #intro .intro-story{top:5%;width:96%}
+  #intro .intro-controls{bottom:3%;width:98%}
+  #intro .intro-actions{gap:0}
+  #intro .intro-caption{margin-top:-4px;padding:6px 4px;font-size:11px}
+  #intro .intro-progress,#intro .intro-footnote{font-size:clamp(10px,2.7vw,13px)}
+}
+@media(max-height:600px) and (min-width:701px){
+  #intro .intro-scene{height:calc(100dvh - 20px);min-height:0}
+  #intro .intro-story{top:5%;left:26%;width:48%}
+  #intro .intro-controls{right:1%;bottom:2%;left:auto;width:58%;transform:none}
+  #intro .intro-caption{margin-top:-12px}
+}
+@media(prefers-reduced-motion:reduce){#intro .intro-paper-button{transition:none}}

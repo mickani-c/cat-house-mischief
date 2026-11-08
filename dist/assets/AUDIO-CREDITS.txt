@@ -1,0 +1,9 @@
+Real cat meow recordings used in the game
+
+Soft meow: "ANMLCat_Domestic Cat Meows 01_KVV AUDIO_FREE" by KVV_Audio.
+Source: https://freesound.org/people/KVV_Audio/sounds/728095/
+License: CC0 1.0. Isolated the quiet middle meow from the Ogg preview, gently raised its level and faded its edges.
+
+Loud meow: "Meow of a Siamese cat - freemaster2.wav" by freemaster2.
+Source: https://commons.wikimedia.org/wiki/File:Meow_of_a_Siamese_cat_-_freemaster2.wav
+License: CC0 1.0. Converted from WAV to Ogg Vorbis for web playback.

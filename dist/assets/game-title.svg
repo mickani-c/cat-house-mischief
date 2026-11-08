@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 190" role="img" aria-labelledby="title">
+  <title id="title">這個家，我話事！</title>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9e9"/><stop offset="1" stop-color="#f6e1bc"/></linearGradient>
+    <linearGradient id="seal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc77e"/><stop offset="1" stop-color="#e99657"/></linearGradient>
+  </defs>
+  <path d="M29 28Q39 22 60 26L752 22Q776 22 793 32L851 37Q874 41 871 63L864 144Q862 164 839 167L116 173Q91 178 71 167L34 157Q19 152 21 133L19 56Q18 36 29 28Z" fill="#a47c5b" opacity=".18"/>
+  <path d="M29 23Q39 17 60 21L752 17Q776 17 793 27L851 32Q874 36 871 58L864 139Q862 159 839 162L116 168Q91 173 71 162L34 152Q19 147 21 128L19 51Q18 31 29 23Z" fill="url(#paper)" stroke="#dab687" stroke-width="2"/>
+  <path d="M43 34Q53 31 64 34M53 154Q68 161 86 157M779 148Q808 156 841 148" fill="none" stroke="#fffdf2" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+  <g transform="rotate(-9 98 92)">
+    <path d="M47 57L54 34Q57 27 65 34L75 46Q96 37 116 45L130 32Q137 27 140 38L143 60Q157 80 153 104Q148 138 108 146Q61 151 45 117Q34 84 47 57Z" fill="url(#seal)" stroke="#985d37" stroke-width="3"/>
+    <path d="M57 57L60 44L70 53M125 52L137 43L136 61" fill="#ffe5b3" stroke="#ad6c40" stroke-width="2"/>
+    <path d="M83 51Q88 58 86 70M101 47Q106 56 104 67M120 52Q126 62 124 72" fill="none" stroke="#c27237" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="77" cy="89" rx="9" ry="11" fill="#432c24"/><ellipse cx="119" cy="88" rx="9" ry="11" fill="#432c24"/>
+    <circle cx="80" cy="85" r="3.5" fill="#fff9e7"/><circle cx="122" cy="84" r="3.5" fill="#fff9e7"/>
+    <path d="M95 104q5-4 10 0l-5 5Z" fill="#a45c50"/><path d="M100 109q-9 10-18 1m18-1q8 9 18-1" fill="none" stroke="#765037" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M75 108l-21-2m20 9l-20 4m67-11l20-4m-20 10l22 3" stroke="#8b6042" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <text x="184" y="57" fill="#a75f47" font-family="Noto Sans CJK HK,Microsoft JhengHei,sans-serif" font-size="20" font-weight="700" letter-spacing="4">栗子與麻糬的搗蛋日常</text>
+  <text x="181" y="128" fill="#67402d" stroke="#fff8e9" stroke-width="5" paint-order="stroke" font-family="Noto Serif CJK HK,Noto Serif CJK TC,Microsoft JhengHei,serif" font-size="67" font-weight="900" letter-spacing="2">這個家，我話事！</text>
+  <path d="M198 143Q401 151 595 145Q696 144 786 139" fill="none" stroke="#d78268" stroke-width="6" stroke-linecap="round"/>
+  <path d="M748 49l5-13 5 13 13 5-13 5-5 13-5-13-13-5Z" fill="#e6a44e"/><circle cx="802" cy="87" r="4" fill="#da8f67"/><circle cx="818" cy="76" r="3" fill="#da8f67"/>
+  <path d="M846 94c-7-5-16 3-15 10-7 2-13 9-9 15 4 7 12 4 18 2 5 3 13 6 18 1 5-7-2-15-9-17 1-4 0-9-3-11Z" fill="#bd7655" opacity=".8"/>
+</svg>

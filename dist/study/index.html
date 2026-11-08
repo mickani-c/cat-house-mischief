@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#211a14">
+  <meta name="description" content="這個家，我話事！的高畫質書房可玩樣板。化身三色虎紋貓栗子，試試踩鍵盤和擋住屏幕。">
+  <title>栗子與鍵盤 ｜ 這個家，我話事！</title>
+  <link rel="stylesheet" href="./study.css">
+  <link rel="preload" as="image" href="./assets/study.webp">
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="title-lockup">
+        <span class="seal" aria-hidden="true"><svg viewBox="0 0 32 32" fill="currentColor"><ellipse cx="7" cy="12" rx="3.4" ry="4.6" transform="rotate(-20 7 12)"/><ellipse cx="13" cy="8" rx="3.2" ry="4.5" transform="rotate(-8 13 8)"/><ellipse cx="20" cy="8" rx="3.2" ry="4.5" transform="rotate(8 20 8)"/><ellipse cx="26" cy="12" rx="3.4" ry="4.6" transform="rotate(20 26 12)"/><path d="M7.5 22.6c0-3.5 5.1-9.2 8.5-9.2s8.5 5.7 8.5 9.2c0 2.7-2 4.1-4.2 4.1-1.9 0-2.7-.9-4.3-.9s-2.4.9-4.3.9c-2.2 0-4.2-1.4-4.2-4.1Z"/></svg></span>
+        <div><p class="kicker">這個家，我話事！ <span>／</span> 高畫質可玩樣板</p><h1>栗子與鍵盤</h1></div>
+      </div>
+      <nav aria-label="試玩選項">
+        <button id="sound" class="quiet" type="button" aria-pressed="true">音效開</button>
+        <a class="quiet back" href="/">返回小屋 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <section class="game" aria-label="可玩的書房">
+      <div id="stage" class="stage" tabindex="0" aria-label="書房遊戲畫面，可點地面移動">
+        <div class="shot room" aria-hidden="true"></div>
+        <div class="shot keys" aria-hidden="true"></div>
+        <div class="shot keys-raised" aria-hidden="true"></div>
+        <div class="shot block" aria-hidden="true"></div>
+        <div class="vignette" aria-hidden="true"></div>
+        <div id="dust" class="dust" aria-hidden="true"></div>
+        <div id="ground-shadow" aria-hidden="true"></div>
+        <canvas id="cat" width="400" height="300" role="img" aria-label="栗子，白胸白腳的三色虎紋貓"></canvas>
+        <button id="companion" class="companion" type="button" aria-label="摸摸麻糬"><img src="./assets/mochi.webp" alt="麻糬，藍眼奶油色長毛貓"><span>摸摸麻糬</span></button>
+        <span id="target" aria-hidden="true"></span>
+        <span id="tap-light" aria-hidden="true"></span>
+        <div id="draft" class="draft" hidden><span>阿澄的記事簿</span><code id="draft-text"></code><i aria-hidden="true"></i></div>
+        <div class="stage-top">
+          <span class="location"><i aria-hidden="true"></i><span id="location">書房 · 黃昏</span></span>
+          <span id="goal" class="goal">目標 · 讓阿澄望一望你</span>
+        </div>
+        <div id="caption" class="caption" role="status" hidden><b id="speaker"></b><span id="line"></span></div>
+        <div id="load-error" class="load-error" hidden>書房素材暫時載入唔到。重新整理頁面就可以再試。</div>
+      </div>
+
+      <div class="console">
+        <div class="console-intro">
+          <span id="step" class="step">01 <span>／</span> 03</span>
+          <div><h2 id="prompt">行近書桌右邊</h2><p id="tip">點地面移動，或者用方向鍵／WASD。</p></div>
+        </div>
+        <div class="actions">
+          <button type="button" class="action primary" id="jump"><kbd>Space</kbd><span>跳上書桌</span></button>
+          <button type="button" class="action primary" id="type" hidden><kbd>E</kbd><span>踩鍵盤</span></button>
+          <button type="button" class="action" id="block" hidden><kbd>F</kbd><span>擋住屏幕</span></button>
+          <button type="button" class="action" id="leave" hidden><kbd>Esc</kbd><span>返回書桌</span></button>
+          <button type="button" class="action" id="reset" aria-label="重玩這一幕" hidden>重玩這一幕</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="key-guide"><kbd>↑ ↓ ← →</kbd> 移動 <span>·</span> <kbd>Space</kbd> 跳 <span>·</span> <kbd>E</kbd> 踩鍵盤 <span>·</span> <kbd>F</kbd> 擋屏幕</div>
+      <p>書房場景 <span>／</span> 2.5D 畫面與可操作角色</p>
+    </footer>
+  </main>
+  <script type="module" src="./study.js"></script>
+</body>
+</html>
