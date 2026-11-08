@@ -357,12 +357,30 @@ function setMobileNotebook(open=false){
   ui['mobile-task-toggle'].setAttribute('aria-expanded',String(expanded));
   if(expanded)ui['mobile-notebook-close']?.focus({preventScroll:true});
 }
+let mobileGuideTimer=0;
+function dismissMobileGuide(markSeen=true){
+  const guide=ui['mobile-guide'];
+  if(!guide)return;
+  clearTimeout(mobileGuideTimer);
+  if(markSeen)guide.dataset.dismissed='true';
+  if(guide.hidden)return;
+  guide.classList.add('is-leaving');
+  mobileGuideTimer=setTimeout(()=>{
+    guide.hidden=true;
+    guide.classList.remove('is-leaving');
+  },360);
+}
 function syncMobileTask(){
   if(!ui['mobile-task-toggle'])return;
   ui['mobile-task-number'].textContent=ui['task-id'].textContent;
   ui['mobile-task-title'].textContent=ui['task-title'].textContent;
   ui['mobile-task-toggle'].hidden=state.phase==='intro'||showcase;
-  ui['mobile-guide'].hidden=state.phase!=='play'||showcase||state.level!==0||state.cleared;
+  const guide=ui['mobile-guide'];
+  const shouldShow=state.phase==='play'&&!showcase&&state.level===0&&!state.cleared&&guide.dataset.dismissed!=='true';
+  clearTimeout(mobileGuideTimer);
+  guide.classList.remove('is-leaving');
+  guide.hidden=!shouldShow;
+  if(shouldShow)mobileGuideTimer=setTimeout(()=>dismissMobileGuide(true),3000);
 }
 function updateTask(){
   // The approved artwork carries the main game's label; keep other modes' live labels visible.
@@ -2839,6 +2857,7 @@ ui['intro-restart'].addEventListener('click',()=>{unlockAudio();setLevel(0);play
 ui['intro-album'].addEventListener('click',()=>openAlbum());
 ui['mobile-task-toggle'].addEventListener('click',()=>setMobileNotebook(!document.body.classList.contains('mobile-notebook-open')));
 ui['mobile-notebook-close'].addEventListener('click',()=>{setMobileNotebook(false);ui.world.focus({preventScroll:true});});
+ui['mobile-guide'].addEventListener('click',()=>dismissMobileGuide(true));
 ui.replay.addEventListener('click',playLevel);
 ui['secret-continue'].addEventListener('click',closeSecretCup);
 ui['secret-album'].addEventListener('click',()=>{const index=levels.length+secretCases.findIndex(record=>record.id===state.secretType);closeSecretCup();openAlbum(index);});

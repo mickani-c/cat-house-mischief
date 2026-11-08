@@ -356,8 +356,16 @@ summary {
     color: #6f4735;
     box-shadow: 0 3px 12px #50382c26;
     transform: translateX(-50%);
-    pointer-events: none;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity .36s ease, transform .36s ease;
     white-space: nowrap;
+  }
+
+  body.game-active .mobile-guide.is-leaving {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+    pointer-events: none;
   }
 
   body.game-active .mobile-guide b {
